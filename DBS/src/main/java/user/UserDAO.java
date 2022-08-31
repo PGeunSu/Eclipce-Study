@@ -11,6 +11,7 @@ public class UserDAO {
 	private PreparedStatement pstmt; //쿼리문 대기 및 설정
 	private ResultSet rs; //결과값 받아오기
 	
+	//DAO(Data Access Object) - 데이터베이스의 data에 접근하기 위한 객체
 	public UserDAO() {
 		try {
 			String dbURL = "jdbc:mariadb://localhost:3306/bbs";
