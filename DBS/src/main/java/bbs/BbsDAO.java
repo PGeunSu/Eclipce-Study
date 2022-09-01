@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class BbsDAO {
 	
@@ -82,6 +83,79 @@ public class BbsDAO {
 		}
 		return -1; //데이터베이스 오류
 		
+		
+	}
+	
+	//게시글 리스트 메소드
+	public ArrayList<Bbs> getList(int pageNumber){
+		String sql = "select * from bbs where bbsID < ? and bbsAvailable = 1 order by bbsID desc limit 10";
+		//모든 게시글 조회, 현재 유효번호가 존재하고 새롭게 작성될 게시글 번호보다 작은 모든 게시글 번호를 내림차순 정렬 (최대 10개)
+		ArrayList<Bbs> list =new ArrayList<Bbs>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, getNext() - (pageNumber-1) * 10);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Bbs bbs = new Bbs();
+				bbs.setBbsID(rs.getInt(1));
+				bbs.setBbsTitle(rs.getString(2));
+				bbs.setUserID(rs.getString(3));
+				bbs.setBbsDate(rs.getString(4));
+				bbs.setBbsContent(rs.getString(5));
+				bbs.setBbsAvailable(rs.getInt(6));
+				list.add(bbs);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//페이징 처리 메소드
+	//특정한 펭지가 존재하는 지 조회하는 메소드
+	//게시글이 10개에서 11개로 넘어갈 때 '다음' 버튼을 만들어 페이징 처리 기능
+	public boolean nextPage(int pageNumber) {
+		String sql = "select * from bbs where bbsID < ? and bbsAvailable = 1";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, getNext() - (pageNumber-1) * 10);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	//하나의 게시글을 보여주는 메소드
+	public Bbs getBbs(int bbsID) {
+		String sql = "select * from bbs where bbsID = ?";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,bbsID);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Bbs bbs = new Bbs();
+				bbs.setBbsID(rs.getInt(1));
+				bbs.setBbsTitle(rs.getString(2));
+				bbs.setUserID(rs.getString(3));
+				bbs.setBbsDate(rs.getString(4));
+				bbs.setBbsContent(rs.getString(5));
+				bbs.setBbsAvailable(rs.getInt(6));
+				return bbs;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 		
 	}
 	

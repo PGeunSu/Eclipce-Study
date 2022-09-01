@@ -1,21 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import = "java.io.PrintWriter" %>
- <%@ page import = "bbs.BbsDAO" %>
- <%@ page import = "bbs.Bbs" %>
- <%@ page import = "java.util.ArrayList" %>
+<%@ page import = "java.io.PrintWriter" %>
+<%@ page import = "bbs.Bbs" %>
+<%@ page import = "bbs.BbsDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/bootstrap.css">
-<style>
-a, a:hover{
-	color:#000000;
-	text-decoration : none;
-}
-</style>
 </head>
 <body>
 <% 
@@ -24,12 +17,24 @@ a, a:hover{
    if(session.getAttribute("userID") != null){
       userID = (String)session.getAttribute("userID");
    }
-   int pageNumber = 1; //기본적으로 1페이지 할당
    
-  //만약 파리미터로 넘어온 오브젝트 타입 'pageNumber'가 존재한다면 'Int' 타입으로 캐스팅해주고 그 값을 'pageNumeber' 변수에 저장
-  if(request.getParameter("pageNumber") != null){
-	  pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-  }
+   int bbsID = 0;
+   if(request.getParameter("bbsID") != null){
+	   bbsID = Integer.parseInt(request.getParameter("bbsID"));
+   }
+   
+   if(bbsID ==0){
+	   PrintWriter script = response.getWriter();
+	   script.println("<script>");
+	   script.println("alert('유요하지 않는 글입니다')");
+	   script.println("location.href=bbs.jsp");
+	   script.println("<script>");
+   }
+   
+   //유요한 글이라면 구체적인 정보를 'bbs'라는 인스턴스에 담는다.
+   Bbs bbs = new BbsDAO().getBbs(bbsID);
+   
+   
    
 %>
   
@@ -84,52 +89,53 @@ a, a:hover{
 	<!--게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<table class="table table-striped" style = "text-align:center; border:1px solid #dddddd">
-				<thead>
-					<tr>
-						<th style="background-color:#eeeeee; text-align:center">번호</th>
-						<th style="background-color:#eeeeee; text-align:center">제목</th>
-						<th style="background-color:#eeeeee; text-align:center">작성자</th>
-						<th style="background-color:#eeeeee; text-align:center">작성일</th>	
-			
-					</tr>
-				</thead>
-				<tbody>
+				<table class="table table=striped" style="text-align:center; border:1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="2" style="background-color:#eeeeee; text-align:center;">게시판 글쓰기 양식</th>
+						</tr>	
+					</thead>
+					<tbody>
+						<tr>
+							<td style="width:20%">글제목</td>
+							<td colspan="2"><%=bbs.getBbsTitle().replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br/>") %></td>
+							
+							
+						</tr>
+						<tr>
+							<td>작성자</td>
+							<td colspan="2"><%=bbs.getUserID()%></td>
+						</tr>
+						<tr>
+							<td>작성자</td>
+							<td colspan="2"><%=bbs.getUserID()%></td>
+						</tr>
+						<tr>
+							<td>작성일자</td>
+							<td colspan="2"><%=bbs.getBbsDate().substring(0,11) +
+											 bbs.getBbsDate().substring(11,13)+ "시" + 
+											 bbs.getBbsDate().substring(14,16)+ "분" %></td>
+						</tr>
+						<tr>
+							<td>내용</td>
+							<td colspan="2" style="height:200px; text-align:left;">
+							<%=bbs.getBbsContent().replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br/>") %></td>
+						</tr>
+					</tbody>
+				</table>
+				<a href="bbs.jsp" class="btn btn-primary">목록</a>
+				
+				<!-- 해당글 작성자가 본인이라면 수정가 삭제가 가능하도록 코드 추가 -->
 				<%
-					BbsDAO bbsDAO = new BbsDAO(); //인스턴스 생성
-					ArrayList<Bbs> list = bbsDAO.getList(pageNumber);
-					for(int i = 0; i<list.size(); i++){
-						
+					if(userID !=null && userID.equals(bbs.getUserID())){	
 				%>
-					<tr>
-						<td><%=list.get(i).getBbsID()%></td>
-						<td><a href ="view.jsp?bbsID=<%=list.get(i).getBbsID()%>">
-						<%=list.get(i).getBbsTitle()%></a></td>
-						<td><%=list.get(i).getUserID()%></td>
-						<td><%=list.get(i).getBbsDate().substring(0,11)%></td>
-					</tr>
-					<%
+				
+				<a href ="update.jsp?bbsID=<%=bbsID %>" class="btn btn-primary">수정</a>	
+				<a href ="deleteAction.jsp?bbsID=<%= bbsID %>" class="btn btn-primary">삭제</a>
+				
+				<%
 					}
-					%>
-				</tbody>
-			</table>
-				<!-- 페이징 처리 영역 -->
-			     <%
-	            if(pageNumber != 1){
-	         %>
-	         <a href="bbs.jsp?pageNumber=<%=pageNumber - 1 %>"
-	          class="btn btn-success btn-arraw-left">이전</a>
-	         <%}
-	            if(bbsDAO.nextPage(pageNumber + 1)) {
-	         %>
-	         <a href="bbs.jsp?pageNumber=<%=pageNumber + 1 %>"
-	          class="btn btn-success btn-arraw-left">다음</a>
-	         <%
-	            }
-	         
-	         %>
-			<!-- 글쓰기 버튼 생성 -->
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+				%>
 		</div>	
 		
 	</div>
