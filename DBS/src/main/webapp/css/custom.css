@@ -1,0 +1,12 @@
+@charset "EUC-KR";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700&display=swap');
+
+*{
+	font-family: 'Nanum Gothic', sans-serif;
+	
+}
+h1{
+	font-family: 'Noto Sans KR', sans-serif;
+}

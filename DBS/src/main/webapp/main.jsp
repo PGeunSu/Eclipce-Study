@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/bootstrap.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/mainStyel.css">
 </head>
 <body>
 <% 
@@ -66,22 +69,50 @@
 	</nav>
 	<!-- 로그인양식 -->
 	<div class="container">
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4">
-			<div class="jumbotron" style="padding-top:20px">
-				<form method="post" action="loginAction.jsp">
-					<h3 style="text-align:center">로그인 화면</h3>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
-					</div>
-					<input type="submit" class="btn btn-primary form-control" value="로그인">
-				</form>
+		<div class="jumbotron">
+			<div>
+				<h1>웹사이트 소개</h1>
+				<p>
+					이 웹사이트는 게시판 1부입니다.
+					최소한의 간단한 로직만을 이용해서 개발했습니다.
+					디자인 템플릿으로는 부트스트랩을 이용하였습니다.
+				</p>
+				<a class="btn btn-primary btn-pull" href="#" role="button"> 게시판 2탄</a>
 			</div>	
 		</div>
-		<div class="col-lg-4"></div>
+		
+		<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="img/1.jpg">
+                </div>
+
+                <div class="item">
+                    <img src="img/2.jpg">
+                </div>
+
+                <div class="item">
+                    <img src="img/3.jpg">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 	</div>
 
 
