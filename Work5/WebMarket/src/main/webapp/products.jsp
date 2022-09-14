@@ -26,7 +26,7 @@
 		//반환된 결과값을 ArrayList<Product> 객체타입 변수 listOfProducts에 저장하도록 스크립틀릿 태그를 작성
 	%>	
 	<div class="container">
-		<div class="row text-center">
+		<div class="row" align="center">
 			<%
 				for(int i = 0; i < listOfProducts.size(); i++){
 					Product product = listOfProducts.get(i);
@@ -34,22 +34,21 @@
 					//상품의 정보를 가져와  Product객체 타입의 변수 product에 저장
 				
 			%>
-			<div>
+			
 				<div class="col-md-4" >
 					<h3><%=product.getPname()%></h3>
 					<p><%=product.getDescription()%></p>
 					<p><%=product.getUnitPrice()%>원</p>
 					<!-- product의 객체 타입의 변수 product에 저장된 상품명, 상품 상세 정보, 상품 가격 등을 출력 -->
+					<p><a href="product.jsp?id=<%=product.getProductId()%>"
+					class="btn btn-secondary" role="button"> 상세정보 &raquo;</a></p>
 				</div>
 				<%
 					}
 				%>
 			</div>
-			
-			
-		</div>
+			</div>
 		<hr>
-	</div>	
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

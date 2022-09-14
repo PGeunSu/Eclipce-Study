@@ -51,6 +51,20 @@ private ArrayList<Book> listOfProducts = new ArrayList<Book>();
 	    	//객체 타입의 변수 listofProducts에 저장된 모든 상품 목록을 가져오는 getAllProductc()메소드를 작성
 	}
 	    
+	  
+	    public Book getBookById(String bookId) {
+	    	Book bookById = null;
+	    	
+	    	for(int i = 0; i<listOfProducts.size(); i++) {
+	    		Book book = listOfProducts.get(i);
+	    		if(book != null && book.getBookId() != null && book.getBookId().equals(bookId)) {
+	    			bookById= book;
+	    			break;
+	    		}
+	    	}
+	    	return bookById;
+	    }
+	    
 	    
 	
 	
