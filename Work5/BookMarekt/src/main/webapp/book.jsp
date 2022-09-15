@@ -3,8 +3,9 @@
 <!-- java-util.ArrayList 패키지 사용을 위해 page 디렉티브 태그의 import 속성을 작성 -->
 <%@ page import="dto.Book"%>
 <!-- 생성된 상품 클래스 dto.Product 패키지를 사용하기위해 page 디렉티브 태그의 import 속성을 작성-->
-<jsp:useBean id="bookDAO" class="dao.BookRepository" scope="session"/>
+<%-- <jsp:useBean id="bookDAO" class="dao.BookRepository" scope="session"/> --%>
 <!-- 자바빈즈로 생성한 ProducRepsitory 클래스를 사용하도록 useBean 액션 태그를 작성 -->
+<%@ page import="dao.BookRepository" %>
 <html>
 <head>
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -22,7 +23,8 @@
 	</div>
 	<%
 		String id = request.getParameter("id");
-		Book book = bookDAO.getBookById(id);
+		BookRepository dao = BookRepository.getInstance();
+		Book book = dao.getBookById(id);
 	%>	
 	<div class="container">
 		<div class="row">

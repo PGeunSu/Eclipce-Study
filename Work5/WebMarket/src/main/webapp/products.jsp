@@ -3,8 +3,10 @@
 <!-- java-util.ArrayList 패키지 사용을 위해 page 디렉티브 태그의 import 속성을 작성 -->
 <%@ page import="dto.Product"%>
 <!-- 생성된 상품 클래스 dto.Product 패키지를 사용하기위해 page 디렉티브 태그의 import 속성을 작성-->
-<jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"/>
+<%-- <jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"/> --%>
 <!-- 자바빈즈로 생성한 ProducRepsitory 클래스를 사용하도록 useBean 액션 태그를 작성 -->
+<%@ page import="dao.ProductRepository" %>
+<!-- import시에는 클래스를 선언하거나 패키지를 선언해서 패키지내의 모든 클래스를 참조할 수 있도록 해줌 -->
 <html>
 <head>
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -21,8 +23,9 @@
 		</div>
 	</div>
 	<%
-		ArrayList<Product> listOfProducts = productDAO.getAllProducts();
-		//useBean 액션 태그의 id 값을 통해 ProductRepository 클래스의 getAllProducts()메소드를 호출하여 
+		ProductRepository dao = ProductRepository.getInstance();
+		ArrayList<Product> listOfProducts = dao.getAllProducts();
+		
 		//반환된 결과값을 ArrayList<Product> 객체타입 변수 listOfProducts에 저장하도록 스크립틀릿 태그를 작성
 	%>	
 	<div class="container">

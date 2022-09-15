@@ -6,8 +6,13 @@ import dto.Product;
 public class ProductRepository {
 	
 	//상품 목록을 저장하기 위한 ArrayList<Product> 객체 타입의 변수 lsitOfProducts를 작성한다.
+	private ArrayList<Product> listOfProducts = new ArrayList<Product>();
+	private static ProductRepository instance = new ProductRepository();
 	
-private ArrayList<Product> listOfProducts = new ArrayList<Product>();
+	public static ProductRepository getInstance() {
+		return instance;
+	}
+	//ProductRepository 클래스 기본 생성자에 대한 객체 변수 instance를 작성한다.
 	
 	public ProductRepository() {
 		Product phone = new Product("P1234","iPhone 6s", 800000);
@@ -57,6 +62,10 @@ private ArrayList<Product> listOfProducts = new ArrayList<Product>();
 	    }
 	    //객체변수 listOfProducts에 저장된 모든 상품 목록에서 상품 아이디와 일치하는 상품을 가져오는 getProductById() 메소드를 작성
 	    
+	    public void addProduct(Product product) {
+	    	listOfProducts.add(product);
+	    }
+	    //객체 변수 listOfProudct에 새로운 상품 정보를 등록하는 addProduct() 메소드 작성 	
 	    
 	
 	

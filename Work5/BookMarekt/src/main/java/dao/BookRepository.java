@@ -8,6 +8,11 @@ public class BookRepository {
 	//상품 목록을 저장하기 위한 ArrayList<Product> 객체 타입의 변수 lsitOfProducts를 작성한다.
 	
 private ArrayList<Book> listOfProducts = new ArrayList<Book>();
+private static BookRepository instance = new BookRepository();
+
+public static BookRepository getInstance() {
+	return instance;
+}
 	
 	public BookRepository() {
 		Book book1= new Book("ISBN1234"," HTML5+CSS3 ", 15000);
@@ -63,6 +68,10 @@ private ArrayList<Book> listOfProducts = new ArrayList<Book>();
 	    		}
 	    	}
 	    	return bookById;
+	    }
+	    
+	    public void addBook(Book book) {
+	    	listOfProducts.add(book);
 	    }
 	    
 	    
