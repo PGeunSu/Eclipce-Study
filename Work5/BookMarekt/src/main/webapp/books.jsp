@@ -31,7 +31,11 @@
 					Book Bookproduct = listOfBook.get(i);				
 			%>
 		<div class="row">
-				<div class="col-md-10" >
+				<div class="col-md-3">
+				<img src="${pageContext.request.contextPath}/images/<%=Bookproduct.getFilename()%>"
+				style="width:100%">
+				</div>
+				<div class="col-md-7" >	
 					<p><h5><b>[<%=Bookproduct.getCategory()%>]<%=Bookproduct.getName()%></b></h5></p>
 					<p style="padding-top:20px"><%=Bookproduct.getDescription().substring(0,100)%>...</p>
 					<p><%=Bookproduct.getAuthor()%> | <%=Bookproduct.getPublisher()%> | <%=Bookproduct.getUnitPrice()%>원</p>

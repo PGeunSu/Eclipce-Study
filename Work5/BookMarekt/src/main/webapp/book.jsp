@@ -28,7 +28,10 @@
 	%>	
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-4">
+				 <img src="${pageContext.request.contextPath}/images/<%=book.getFilename() %>"style="height:100%; width:100%">
+			</div>
+			<div class="col-md-8">
 				<h3>[<%=book.getCategory()%>]<%=book.getName() %></h3>
 				<p><%=book.getDescription() %></p>
 				<p><b>도서 코드 : </b><span class="badge badge-danger">
@@ -40,7 +43,7 @@
 				<p><b>출판일 : </b><%=book.getReleaseDate() %></p>
 			 	<h4><%=book.getUnitPrice() %>원</h4>
 			 	<p><a href="#" class="btn btn-info">상품 주문 &raquo;</a>
-				<a href="products.jsp" class="btn btn-secondary">상품 목록 &raquo;</a></p>
+				<a href="books.jsp" class="btn btn-secondary">상품 목록 &raquo;</a></p>
 			</div>
 			
 		</div>
