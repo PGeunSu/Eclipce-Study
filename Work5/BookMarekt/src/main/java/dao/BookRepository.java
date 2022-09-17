@@ -8,6 +8,11 @@ public class BookRepository {
 	//상품 목록을 저장하기 위한 ArrayList<Product> 객체 타입의 변수 lsitOfProducts를 작성한다.
 	
 private ArrayList<Book> listOfProducts = new ArrayList<Book>();
+private static BookRepository instance = new BookRepository();
+
+public static BookRepository getInstance() {
+	return instance;
+}
 	
 	public BookRepository() {
 		Book book1= new Book("ISBN1234"," HTML5+CSS3 ", 15000);
@@ -18,6 +23,7 @@ private ArrayList<Book> listOfProducts = new ArrayList<Book>();
 	      book1.setUnitsInStock(1000);
 	      book1.setTotalPages(288);
 	      book1.setReleaseDate("2018/03/02");
+	      book1.setFilename("ISBN1234.jpg");
 	      
 	      Book book2= new Book("ISBN1235"," 쉽게 배우는 자바 프로그래밍 ", 27000);
 	      book2.setAuthor("우종중");
@@ -27,6 +33,7 @@ private ArrayList<Book> listOfProducts = new ArrayList<Book>();
 	      book2.setUnitsInStock(1000);
 	      book2.setTotalPages(692);
 	      book2.setReleaseDate("2017/08/02");
+	      book2.setFilename("ISBN1235.jpg");
 	      
 	      Book book3= new Book("ISBN1236"," 스프링4 입문 ", 27000);
 	      book3.setAuthor("하세가와 유이치, 오오노 와타루, 토키 코헤이(권은철, 전민수");
@@ -36,6 +43,7 @@ private ArrayList<Book> listOfProducts = new ArrayList<Book>();
 	      book3.setUnitsInStock(1000);
 	      book3.setTotalPages(520);
 	      book3.setReleaseDate("2017/11/02");
+	      book3.setFilename("ISBN1236.jpg");
 		
 	    
 	    listOfProducts.add(book1);
@@ -50,6 +58,24 @@ private ArrayList<Book> listOfProducts = new ArrayList<Book>();
 	    	return listOfProducts;
 	    	//객체 타입의 변수 listofProducts에 저장된 모든 상품 목록을 가져오는 getAllProductc()메소드를 작성
 	}
+	    
+	  
+	    public Book getBookById(String bookId) {
+	    	Book bookById = null;
+	    	
+	    	for(int i = 0; i<listOfProducts.size(); i++) {
+	    		Book book = listOfProducts.get(i);
+	    		if(book != null && book.getBookId() != null && book.getBookId().equals(bookId)) {
+	    			bookById= book;
+	    			break;
+	    		}
+	    	}
+	    	return bookById;
+	    }
+	    
+	    public void addBook(Book book) {
+	    	listOfProducts.add(book);
+	    }
 	    
 	    
 	
