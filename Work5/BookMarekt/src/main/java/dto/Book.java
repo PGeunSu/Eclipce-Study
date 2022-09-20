@@ -3,41 +3,39 @@ package dto;
 import java.io.Serializable;
 
 public class Book implements Serializable {
-	
+
 	private static final long serialVersionUID = -4274700572038677000L;
-	
-	private String bookId; //ë„ì„œ ì•„ì´ë””
-	private String name; // ë„ì„œëª… 
-	private Integer unitPrice; // ê°€ê²©
-	private String author; // ì €ì
-	private String description; // ì„¤ëª…
-	private String publisher; //ì¶œíŒì‚¬ 
-	private String category; // ë¶„ë¥˜
-	private long unitsInStock; //ì¬ê³  ìˆ˜
-	private long totalPages; // í˜ì´ì§€ ìˆ˜
- 	private String releaseDate; // ì¶œíŒì¼(ì›”/ë…„)
-	private String condition; //ì‹ ê·œ ë„ì„œ or ì¤‘ê³  or E-Book
+
+	private String bookId; 		    //Ã¥ ID
+	private String name;			//Ã¥ÀÌ¸§
+	private Integer  unitPrice; 	//°¡°İ
+	private String author;			//ÀúÀÚ
+	private String description; 	//¼³¸í
+	private String publisher;	    //ÃâÆÇ»ç
+	private String category; 		//ºĞ·ù
+	private long   unitsInStock; 	//Àç°í°³¼ö
+	private long   totalPages; 		//ÆäÀÌÁö¼ö
+	private String releaseDate;   //ÃâÆÇÀÏ(¿ù/³â)
+	private String condition; 		//½ÅÁ¦Ç° or ±¸Á¦Ç° or ¸®ÆÛºêÁ¦Ç°
 	private String filename;
-	
+
 	public Book() {
 		super();
-		
-	}
+}
 
-	public Book(String bookid, String name, Integer unitPrice) {
-		super();
-		this.bookId = bookid;
+	public Book(String bookId, String name, Integer unitPrice) {
+		this.bookId = bookId;
 		this.name = name;
 		this.unitPrice = unitPrice;
 	}
-	
 
 	public String getBookId() {
 		return bookId;
 	}
 
-	public void setBookId(String bookid) {
-		this.bookId = bookid;
+	
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
 	}
 
 	public String getName() {
@@ -48,14 +46,15 @@ public class Book implements Serializable {
 		this.name = name;
 	}
 
-	public Integer getUnitPrice() {
+	public Integer  getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(Integer unitPrice) {
+	public void setUnitPrice(Integer  unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
+	
 	public String getAuthor() {
 		return author;
 	}
@@ -64,6 +63,7 @@ public class Book implements Serializable {
 		this.author = author;
 	}
 
+	
 	public String getDescription() {
 		return description;
 	}
@@ -111,7 +111,7 @@ public class Book implements Serializable {
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-
+	
 	public String getCondition() {
 		return condition;
 	}
@@ -119,7 +119,6 @@ public class Book implements Serializable {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
-
 	public String getFilename() {
 		return filename;
 	}
@@ -127,8 +126,6 @@ public class Book implements Serializable {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	
-	
-	
- 
+
+
 }

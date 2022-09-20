@@ -12,7 +12,7 @@
 	String tagline = "Welcome to Web Market!"; %>
 	<div class="jumbotron">
 		<div class="container">
-			<h1 class="display-3">
+			<h1 class="display-4">
 				<%=greeting%>
 			</h1>
 		</div>
