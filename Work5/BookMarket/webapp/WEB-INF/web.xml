@@ -2,13 +2,13 @@
 <web-app>
 	
 	<security-role>
-		<description></description>
+		<!-- <description></description> -->
 		<role-name>guest</role-name>
 	</security-role>
 	
 	<security-constraint>
 		<web-resource-collection>
-			<display-name>BookMarket Security</display-name>
+		<!-- 	<display-name>BookMarket Security</display-name> -->
 			<web-resource-name>BookMarket</web-resource-name>
 			<url-pattern>/addBook.jsp</url-pattern>
 		</web-resource-collection>
@@ -24,6 +24,10 @@
  			<form-error-page>/login_failed.jsp</form-error-page>
  		</form-login-config>			
  	</login-config>
+	 	<error-page>
+	 		<error-code>404</error-code>
+	 		<location>/exceptionNoPage.jsp</location>
+	 	</error-page>
 </web-app>
 
 

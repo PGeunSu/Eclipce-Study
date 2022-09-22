@@ -6,6 +6,7 @@
 <%-- <jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"/> --%>
 <!-- 자바빈즈로 생성한 ProducRepsitory 클래스를 사용하도록 useBean 액션 태그를 작성 -->
 <%@ page import="dao.ProductRepository" %>
+<%@ page errorPage="exceptionNoProductId.jsp"%>
 <html>
 <head>
 <link rel="stylesheet"	href="resources/css/bootstrap.min.css">

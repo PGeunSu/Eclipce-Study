@@ -25,5 +25,13 @@
        		<form-error-page>/22.09.21/login_failed.jsp</form-error-page>
        </form-login-config>
     </login-config>
+    <error-page>
+    	<error-code>500</error-code>
+    	<location>/22.09.22/errorCode_error.jsp</location>
+    </error-page>
+   <error-page>
+    	<!-- <exception-type>java.lang.Exception</exception-type> -->
+    	<!-- <location>/22.09.22/exceptionType_error.jsp</location> -->
+    </error-page>
     
 </web-app>      
