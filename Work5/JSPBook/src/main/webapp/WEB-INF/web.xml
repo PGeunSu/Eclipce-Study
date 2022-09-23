@@ -30,8 +30,41 @@
     	<location>/22.09.22/errorCode_error.jsp</location>
     </error-page>
    <error-page>
-    	<!-- <exception-type>java.lang.Exception</exception-type> -->
-    	<!-- <location>/22.09.22/exceptionType_error.jsp</location> -->
+    	<exception-type>java.lang.Exception</exception-type>
+     <location>/22.09.22/exceptionType_error.jsp</location> 
     </error-page>
-    
+    <filter>
+    	<filter-name>Filter01</filter-name>
+    	<filter-class>filter.AuthenFilter</filter-class>
+    </filter>
+    <!-- 필터이름 filter01과 Filter 인터페이스를 구현한 자바 클래스 AuthenFilter를 설정하도록 <filter>요소를 작성합니다. -->
+    <filter-mapping>
+    	<filter-name>Filter01</filter-name>
+    	<url-pattern>/22.09.23/filter01_process.jsp</url-pattern>
+    	<!-- 필터이름 Filter01과 요청 url 패턴 /filter01_process.jsp를 설정하도록 filter-mapping요소를 작성합니다. -->
+    </filter-mapping>
+    <filter>
+    	<filter-name>Filter02</filter-name>
+    	<filter-class>filter.InitParamFilter</filter-class>
+    	<init-param>
+    		<param-name>param1</param-name>
+    		<param-value>admin</param-value>
+    	</init-param>		
+    	<init-param>
+    		<param-name>param2</param-name>
+    		<param-value>1234</param-value>
+    	</init-param>
+    </filter>
+    <filter-mapping>
+    	<filter-name>Filter02</filter-name>
+    	<url-pattern>/22.09.23/filter02_process.jsp</url-pattern>
+    </filter-mapping>
+   <filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>filter.LoginCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>/22.09.23/loginForm_success.jsp</url-pattern>
+	</filter-mapping>
 </web-app>      
