@@ -24,9 +24,10 @@ public class LogFileFilter implements Filter {
       } catch (IOException e) {
          throw new ServletException("로그 파일을 열 수 없습니다.");
       }
-   }
+   }//필터 수행
 
    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws java.io.IOException, ServletException {
+	   //
       writer.println(" 접속한 클라이언트 IP : " + request.getRemoteAddr());
       long start = System.currentTimeMillis();
       writer.println(" 접근한 URL 경로 : " + getURLPath(request));
@@ -42,9 +43,11 @@ public class LogFileFilter implements Filter {
 
    public void destroy() {
       writer.close();
-   }
+   } //필터가 끝났을 때
 
    private String getURLPath(ServletRequest request) {
+	   //ServletRequest request는 HTTP요청이 아닌 경우도 교려해서 만든 인터페이스이다.
+	   //HTTP를 사용하려면 HTTPServletRequest로 다운 캐스팅 한 뒤 사용하면 된다.
       HttpServletRequest req;
       String currentPath = "";
       String queryString = "";
