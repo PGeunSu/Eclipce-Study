@@ -48,6 +48,7 @@ public class LogFileFilter implements Filter {
       HttpServletRequest req;
       String currentPath = "";
       String queryString = "";
+      //필터가 감싸고 있기 때문에 클라이언트가 request가 맞는 지 확인 후 다운 캐스팅 작업이 필요
       if (request instanceof HttpServletRequest) {
          req = (HttpServletRequest) request;
          currentPath = req.getRequestURI();
