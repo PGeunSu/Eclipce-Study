@@ -7,17 +7,20 @@ public class Book implements Serializable {
 	private static final long serialVersionUID = -4274700572038677000L;
 
 	private String bookId; 		    //Ã¥ ID
-	private String name;			//Ã¥ÀÌ¸§
-	private Integer  unitPrice; 	//°¡°İ
-	private String author;			//ÀúÀÚ
-	private String description; 	//¼³¸í
-	private String publisher;	    //ÃâÆÇ»ç
-	private String category; 		//ºĞ·ù
-	private long   unitsInStock; 	//Àç°í°³¼ö
-	private long   totalPages; 		//ÆäÀÌÁö¼ö
-	private String releaseDate;   //ÃâÆÇÀÏ(¿ù/³â)
-	private String condition; 		//½ÅÁ¦Ç° or ±¸Á¦Ç° or ¸®ÆÛºêÁ¦Ç°
+	private String name;			//Ã¥ï¿½Ì¸ï¿½
+	private Integer  unitPrice; 	//ï¿½ï¿½ï¿½ï¿½
+	private String author;			//ï¿½ï¿½ï¿½ï¿½
+	private String description; 	//ï¿½ï¿½ï¿½ï¿½
+	private String publisher;	    //ï¿½ï¿½ï¿½Ç»ï¿½
+	private String category; 		//ï¿½Ğ·ï¿½
+	private long   unitsInStock; 	//ï¿½ï¿½ï¿½ï¿½ï¿½
+	private long   totalPages; 		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String releaseDate;   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½/ï¿½ï¿½)
+	private String condition; 		//ï¿½ï¿½ï¿½ï¿½Ç° or ï¿½ï¿½ï¿½ï¿½Ç° or ï¿½ï¿½ï¿½Ûºï¿½ï¿½ï¿½Ç°
 	private String filename;
+	private int quantity; //ì¥ë°”êµ¬ë‹ˆì— ë‹´ì€ ê°œìˆ˜
+
+	
 
 	public Book() {
 		super();
@@ -125,6 +128,14 @@ public class Book implements Serializable {
 
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 
