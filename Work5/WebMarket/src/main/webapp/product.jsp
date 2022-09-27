@@ -31,10 +31,11 @@
 								<h1 class="display-3">상품 정보</h1>
 							</div>
 						</div>
-						<% String id=request.getParameter("id"); //상품 목록페이지로부터 전달되는 상품 아이디를 전송 받로고 request 내장 개체의
-							getParmeter() 메소드 작성 ProductRepository dao=ProductRepository.getInstance(); Product
-							product=dao.getProductById(id); //ProductRepository 클래스의 객체 변수 instance를 호출하는 getInstance()
-							메소드를 작성하고 //이를 통해 getProductById(id) 메소드를 호출하여 반환 결과 값을 Product객체 타입의 변수 product에 저장 %>
+						<% String id=request.getParameter("id"); //상품 목록페이지로부터 전달되는 상품 아이디를 전송 받로고 request 내장 개체의 getParmeter() 메소드 작성 
+							ProductRepository dao=ProductRepository.getInstance(); 
+							Product product=dao.getProductById(id); //ProductRepository 클래스의 객체 변수 instance를 호출하는 getInstance()
+							//메소드를 작성하고 이를 통해 getProductById(id) 메소드를 호출하여 반환 결과 값을 Product객체 타입의 변수 product에 저장 
+							%>
 							<div class="container">
 								<div class="row">
 									<div class="col-md-5">
