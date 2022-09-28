@@ -11,6 +11,7 @@
 			<!-- <display-name>WebMarket Security</display-name>  -->
 			<web-resource-name>WebMarket</web-resource-name>
 			<url-pattern>/addProduct.jsp</url-pattern>
+			<url-pattern>/editProduct.jsp</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<description>권한 관리자명</description>
