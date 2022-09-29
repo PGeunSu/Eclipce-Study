@@ -1,7 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
-<%@ page import="dao.ProductRepository"%>
+<%@ page import="java.sql.*" %>
 
 <%  //전송된 상품 id 
 	String id = request.getParameter("id");

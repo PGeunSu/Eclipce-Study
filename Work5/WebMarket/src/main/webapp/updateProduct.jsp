@@ -21,6 +21,7 @@
     
     	String productId = request.getParameter("id");
     
+    
          	String sql = "select * from product where p_id = ?";
          	pstmt = conn.prepareStatement(sql); //slecet 문을 사용하여 얻어온 레코드 값을 테이블 형태로 저장
     		pstmt.setString(1, productId);

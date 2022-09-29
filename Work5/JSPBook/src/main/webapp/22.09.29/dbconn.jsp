@@ -8,7 +8,7 @@
 	
 	try{
 		
-		String url = "jdbc:mysql://localhost:3307/WebMarketDB";
+		String url = "jdbc:mysql://localhost:3307/ExerciseDB";
 		String user = "root";
 		String password = "1234";
 		
