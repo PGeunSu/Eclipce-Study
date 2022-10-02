@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `book` (
   PRIMARY KEY (`b_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 bookmarketdb.book:~2 rows (대략적) 내보내기
+-- 테이블 데이터 bookmarketdb.book:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
 INSERT INTO `book` (`b_id`, `b_name`, `b_unitPrice`, `b_author`, `b_description`, `b_publisher`, `b_category`, `b_unitsInStock`, `b_totalPages`, `b_releaseDate`, `b_condition`, `b_fileName`) VALUES
 	('ISBN1234', 'HTML5+CSS3', 15000, '황재호', '워드나 PPT 문서를 만들 수 있나요? 그러면 문제 없습니다. 지금 바로 웹페이지 제작에 도전해보세요. 지금 당장 컴퓨터가 없어도 괜찮습니다. 코드와 실행 화면이 바로 보여서 눈으로만 읽어도 어떻게 작동하는지 쉽게 파악할 수 있는 것은 기본이고, 중간중간 퀴즈를 추가하여 재미있게 게임하듯 복습할 수 있습니다.', '한빛미디어', 'Hello Coding', '1000', '288', '2018/03/02', 'New', 'ISBN1234.jpg'),
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `phone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 테이블 데이터 exercisedb.student:~1 rows (대략적) 내보내기
+-- 테이블 데이터 exercisedb.student:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
 INSERT INTO `student` (`num`, `depart`, `name`, `address`, `phone`) VALUES
 	('1123112321', '조리과', '박근수', NULL, '010-3230-4877');
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 webmarketdb.member:~1 rows (대략적) 내보내기
+-- 테이블 데이터 webmarketdb.member:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`id`, `password`, `name`, `gender`, `birth`, `mail`, `phone`, `address`, `regist_day`) VALUES
 	('pks4877', '1234', '박근수', '남', '2000/10/13', 'pks4877@naver.com', '010-3230-4877', '경기도 양주시 화합로 1426번길 39 ', '2022-09-30 14:21:31.235');
