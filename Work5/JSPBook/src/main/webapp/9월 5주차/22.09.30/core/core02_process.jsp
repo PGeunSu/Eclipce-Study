@@ -17,7 +17,7 @@
 	 		<c:out value="${number}"/>은 짝수입니다.
 	 		</c:when>
 	 		<c:when test="${number%2==1}">
-	 		<c:out value="${number}"/>은 호수입니다.
+	 		<c:out value="${number}"/>은 홀수입니다.
 	 		</c:when>
 	 		<c:otherwise>
 	 			숫자가 아닙니다.
