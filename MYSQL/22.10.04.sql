@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `book` (
   PRIMARY KEY (`b_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 bookmarketdb.book:~3 rows (대략적) 내보내기
+-- 테이블 데이터 bookmarketdb.book:~2 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
 INSERT INTO `book` (`b_id`, `b_name`, `b_unitPrice`, `b_author`, `b_description`, `b_publisher`, `b_category`, `b_unitsInStock`, `b_totalPages`, `b_releaseDate`, `b_condition`, `b_fileName`) VALUES
 	('ISBN1234', 'HTML5+CSS3', 15000, '황재호', '워드나 PPT 문서를 만들 수 있나요? 그러면 문제 없습니다. 지금 바로 웹페이지 제작에 도전해보세요. 지금 당장 컴퓨터가 없어도 괜찮습니다. 코드와 실행 화면이 바로 보여서 눈으로만 읽어도 어떻게 작동하는지 쉽게 파악할 수 있는 것은 기본이고, 중간중간 퀴즈를 추가하여 재미있게 게임하듯 복습할 수 있습니다.', '한빛미디어', 'Hello Coding', '1000', '288', '2018/03/02', 'New', 'ISBN1234.jpg'),
@@ -42,44 +42,22 @@ INSERT INTO `book` (`b_id`, `b_name`, `b_unitPrice`, `b_author`, `b_description`
 	('ISBN1236', '스프링4 입문 ', 27000, '하세가와 유이치 , 오오노 와타루 ', '스프링은 단순히 사용 방법만 익히는 것보다 아키텍처를 어떻게 이해하고 설계하는지가 더 중요합니다. 예제를 복사해 붙여넣는 식으로는 실제 개발에서 스프링을 제대로 활용할 수 없습니다. 이 책에서는 웹 애플리케이션의 기초를 다지고 스프링 코어를 살펴보며 클라우드 네이티브 입문까지 다룹니다. 이제 막 실무에 뛰어든 웹 애플리케이션 초급자나 개발 경험은 있지만 스프링은 사용해본 적 없는 분을 대상으로 가능한 한 쉽게 설명합니다', '한빛미디어', 'IT모바일', '1000', '520', '2017/11/01', 'New', 'ISBN1236.jpg');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 
-
--- exercisedb 데이터베이스 구조 내보내기
-CREATE DATABASE IF NOT EXISTS `exercisedb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `exercisedb`;
-
--- 테이블 exercisedb.student 구조 내보내기
-CREATE TABLE IF NOT EXISTS `student` (
-  `num` varchar(20) DEFAULT NULL,
-  `depart` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `address` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- 테이블 데이터 exercisedb.student:~0 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` (`num`, `depart`, `name`, `address`, `phone`) VALUES
-	('1123112321', '조리과', '박근수', NULL, '010-3230-4877');
-/*!40000 ALTER TABLE `student` ENABLE KEYS */;
-
-
--- jspbook 데이터베이스 구조 내보내기
-CREATE DATABASE IF NOT EXISTS `jspbook` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `jspbook`;
-
--- 테이블 jspbook.member 구조 내보내기
+-- 테이블 bookmarketdb.member 구조 내보내기
 CREATE TABLE IF NOT EXISTS `member` (
-  `id` varchar(20) NOT NULL,
-  `passwd` varchar(20) DEFAULT NULL,
-  `name` varchar(30) DEFAULT NULL,
+  `id` varchar(10) NOT NULL,
+  `password` varchar(10) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  `gender` varchar(4) DEFAULT NULL,
+  `birth` varchar(10) DEFAULT NULL,
+  `mail` varchar(20) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `address` varchar(90) DEFAULT NULL,
+  `regist_day` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 jspbook.member:~2 rows (대략적) 내보내기
+-- 테이블 데이터 bookmarketdb.member:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` (`id`, `passwd`, `name`) VALUES
-	('1', '1234', '홍길순'),
-	('2', '1235', '홍길동');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 
 
@@ -101,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 webmarketdb.member:~0 rows (대략적) 내보내기
+-- 테이블 데이터 webmarketdb.member:~1 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`id`, `password`, `name`, `gender`, `birth`, `mail`, `phone`, `address`, `regist_day`) VALUES
 	('pks4877', '1234', '박근수', '남', '2000/10/13', 'pks4877@naver.com', '010-3230-4877', '경기도 양주시 화합로 1426번길 39 ', '2022-09-30 14:21:31.235');
