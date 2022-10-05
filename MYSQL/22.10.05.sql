@@ -65,6 +65,26 @@ CREATE TABLE IF NOT EXISTS `member` (
 CREATE DATABASE IF NOT EXISTS `webmarketdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `webmarketdb`;
 
+-- 테이블 webmarketdb.board 구조 내보내기
+CREATE TABLE IF NOT EXISTS `board` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(10) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `regist_day` varchar(30) DEFAULT NULL,
+  `hit` int DEFAULT NULL,
+  `ip` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+-- 테이블 데이터 webmarketdb.board:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `board` DISABLE KEYS */;
+INSERT INTO `board` (`num`, `id`, `name`, `subject`, `content`, `regist_day`, `hit`, `ip`) VALUES
+	(1, 'gumi', '이순신', '설맞이', '새해복많이..', '2022-10-05 13:47:42', 1, ''),
+	(2, 'iu', '아이유', '인사', '안녕하세여..', '2022-10-05 13:49:01', 1, '');
+/*!40000 ALTER TABLE `board` ENABLE KEYS */;
+
 -- 테이블 webmarketdb.member 구조 내보내기
 CREATE TABLE IF NOT EXISTS `member` (
   `id` varchar(10) NOT NULL,
@@ -79,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 webmarketdb.member:~1 rows (대략적) 내보내기
+-- 테이블 데이터 webmarketdb.member:~2 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`id`, `password`, `name`, `gender`, `birth`, `mail`, `phone`, `address`, `regist_day`) VALUES
 	('pks4877', '1234', '박근수', '남', '2000/10/13', 'pks4877@naver.com', '010-3230-4877', '경기도 양주시 화합로 1426번길 39 ', '2022-09-30 14:21:31.235');
