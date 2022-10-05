@@ -68,7 +68,7 @@
 		<filter-name>loginFilter</filter-name>
 		<url-pattern>/22.09.23/loginForm_success.jsp</url-pattern>
 	</filter-mapping>
-	
+	<!-- 
 	<servlet>
 		<discription>Hello World 서블릿 호출</discription>
 		<display-name>HelloWorld</display-name>
@@ -79,6 +79,16 @@
 		<servlet-name>HelloWorld</servlet-name>
 		<url-pattern>/22.10.04/HelloWorld.do</url-pattern>
 	</servlet-mapping>
+	 -->
+	 
+	<servlet>
+		<servlet-name> myController </servlet-name>
+		<servlet-class>com.controller.ControllerServlet</servlet-class>
+	</servlet>
 	
+	<servlet-mapping>
+		<servlet-name> myController </servlet-name>
+		<url-pattern> /java/ControllerServlet </url-pattern>
+	</servlet-mapping>
 	
 </web-app>      
