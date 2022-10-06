@@ -76,13 +76,14 @@ CREATE TABLE IF NOT EXISTS `board` (
   `hit` int DEFAULT NULL,
   `ip` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 webmarketdb.board:~0 rows (대략적) 내보내기
+-- 테이블 데이터 webmarketdb.board:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
 INSERT INTO `board` (`num`, `id`, `name`, `subject`, `content`, `regist_day`, `hit`, `ip`) VALUES
 	(1, 'gumi', '이순신', '설맞이', '새해복많이..', '2022-10-05 13:47:42', 1, ''),
-	(2, 'iu', '아이유', '인사', '안녕하세여..', '2022-10-05 13:49:01', 1, '');
+	(2, 'iu', '아이유', '인사', '안녕하세여..', '2022-10-05 13:49:01', 1, ''),
+	(3, 'pks4877', '박근수', '123', '1234', '2022-10-06-13:41:59', 0, '0:0:0:0:0:0:0:1');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 
 -- 테이블 webmarketdb.member 구조 내보내기
