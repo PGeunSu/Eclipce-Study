@@ -26,7 +26,7 @@
 				Date day = new java.util.Date();
 				String am_pm;
 				int hour = day.getHours();
-				int minute = day.getMinutes();
+				int minute = day.getMinutes();	
 				int second = day.getSeconds();
 				if (hour / 12 == 0) {
 					am_pm = "AM";

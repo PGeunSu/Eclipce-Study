@@ -47,7 +47,7 @@ private static BoardDAO instance;
       } 
       
       try {
-         conn = getConnection(); //커넥션 얻기
+         conn = DBConnection.getConnection(); //커넥션 얻기
          pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
          rs = pstmt.executeQuery();   //DB에 저장되어 있는 상품 모두 가져와 ResultSet에 담음
          
@@ -73,18 +73,31 @@ private static BoardDAO instance;
          }
    
          
-      }catch (SQLException e){
-         System.out.println("getBoardList() 예외" + e.getMessage());
-         e.printStackTrace();
-      }finally {
-         try {
-            if(rs != null) rs.close();
-            if(pstmt != null) pstmt.close();
-            if(conn != null) conn.close();
-         } catch (Exception e2) {
-            System.out.println("getBoardList()의 close() 호출 예외" + e2.getMessage());
-            e2.printStackTrace();
-         }
+      }catch (Exception e) {
+          e.printStackTrace();
+      } finally {
+          // 사용이 완료되면 반드시 해제해줘야한다.
+          if( rs != null ) {
+              try {
+                  rs.close(); 
+              } catch (SQLException e) {
+                  e.printStackTrace();
+              }
+          }
+          if( pstmt != null ) {
+              try {
+                  pstmt.close(); 
+              } catch (SQLException e) {
+                  e.printStackTrace();
+              }
+          }
+          if( conn != null ) {
+              try {
+                  conn.close(); 
+              } catch (SQLException e) {
+                  e.printStackTrace();
+              }
+          }
       }
       
       return dtos;
@@ -111,7 +124,7 @@ private static BoardDAO instance;
          //파라미터로 넘어오는 값으로 검색
       } 
       try {
-    	  conn = getConnection(); //커넥션 얻기
+    	  conn = DBConnection.getConnection(); //커넥션 얻기
           pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
           rs = pstmt.executeQuery();   //DB에 저장되어 있는 상품 모두 가져와 ResultSet에 담음
           
@@ -119,18 +132,31 @@ private static BoardDAO instance;
             count = rs.getInt(1);
          }
          
-      } catch (SQLException e) {
-         System.out.println("getListCount() 예외" + e.getMessage());
-         e.printStackTrace();
-      }finally {
-         try {
-            if(rs != null) rs.close();
-            if(pstmt != null) pstmt.close();
-            if(conn != null) conn.close();
-         } catch (Exception e2) {
-            System.out.println("getListCount()의 close() 호출 예외" + e2.getMessage());
-            e2.printStackTrace();
-         }
+      } catch (Exception e) {
+          e.printStackTrace();
+      } finally {
+          // 사용이 완료되면 반드시 해제해줘야한다.
+          if( rs != null ) {
+              try {
+                  rs.close(); 
+              } catch (SQLException e) {
+                  e.printStackTrace();
+              }
+          }
+          if( pstmt != null ) {
+              try {
+                  pstmt.close(); 
+              } catch (SQLException e) {
+                  e.printStackTrace();
+              }
+          }
+          if( conn != null ) {
+              try {
+                  conn.close(); 
+              } catch (SQLException e) {
+                  e.printStackTrace();
+              }
+          }
       }
    
       return count;
@@ -138,6 +164,101 @@ private static BoardDAO instance;
       
    }
    
+ //member테이블에서 인증된 id의 사용자명 가져오기
+	
+ 	public String getLoginName(String id) {
+ 		String name = null;
+ 		String sql = "select * from member where id = ?";
+ 	
+ 	try {
+ 		conn = DBConnection.getConnection();
+ 		pstmt = conn.prepareStatement(sql);
+ 		pstmt.setString(1, id);
+ 		
+ 		rs = pstmt.executeQuery();
+ 		
+ 		if(rs.next()) {
+ 			name = rs.getString("name");
+ 		}
+ 		}catch (Exception e) {
+             e.printStackTrace();
+         } finally {
+             // 사용이 완료되면 반드시 해제해줘야한다.
+             if( rs != null ) {
+                 try {
+                     rs.close(); 
+                 } catch (SQLException e) {
+                     e.printStackTrace();
+                 }
+             }
+             if( pstmt != null ) {
+                 try {
+                     pstmt.close(); 
+                 } catch (SQLException e) {
+                     e.printStackTrace();
+                 }                                                                      
+             }
+             if( conn != null ) {
+                 try {
+                     conn.close(); 
+                 } catch (SQLException e) {
+                     e.printStackTrace();
+                 }
+             }
+         }
+ 		
+ 		return name;
+ 		
+ 		
+ 	}
+ 	
+ 	//board테이블에 새로운 글을 작성하는 메소드
+ 	public void insertBoard(BoardDTO boardDTO) {
+ 		
+ 		try {
+ 	 			String sql = "insert into board values(?,?,?,?,?,?,?,?)";
+ 	 			conn = DBConnection.getConnection();
+ 	 			pstmt = conn.prepareStatement(sql);
+ 	 			pstmt.setInt(1,boardDTO.getNum());
+ 	 			pstmt.setString(2,boardDTO.getId());
+ 	 			pstmt.setString(3,boardDTO.getName());
+ 	 			pstmt.setString(4,boardDTO.getSubject());
+ 	 			pstmt.setString(5,boardDTO.getContent());
+ 	 			pstmt.setString(6,boardDTO.getRegist_day());
+ 	 			pstmt.setInt(7,boardDTO.getHit());
+ 	 			pstmt.setString(8,boardDTO.getIp());
+ 	 			
+ 	 			pstmt.executeUpdate();
+ 	 			
+ 	 			
+ 	 		
+ 	 		}catch (Exception e) {
+ 	             e.printStackTrace();
+ 	         } finally {
+ 	             // 사용이 완료되면 반드시 해제해줘야한다.
+ 	             if( rs != null ) {
+ 	                 try {
+ 	                     rs.close(); 
+ 	                 } catch (SQLException e) {
+ 	                     e.printStackTrace();
+ 	                 }
+ 	             }
+ 	             if( pstmt != null ) {
+ 	                 try {
+ 	                     pstmt.close(); 
+ 	                 } catch (SQLException e) {
+ 	                     e.printStackTrace();
+ 	                 }
+ 	             }
+ 	             if( conn != null ) {
+ 	                 try {
+ 	                     conn.close(); 
+ 	                 } catch (SQLException e) {
+ 	                     e.printStackTrace();
+ 	                 }
+ 	             }
+ 	         }
+ 	}
 }   
    
    
