@@ -1,91 +1,81 @@
 package mvc.model;
 
 public class BoardDTO {
-	
-	private int num; //순번
-	private String id; //등록자 아이디
-	private String name; //등록자 이름
-	private String subject; //제목
-	private String content; //내용
-	private String regist_day; //일자
-	private int hit; //조회 수
-	private String ip; //IP 주소
-	
-	//기본생성자
-	
-	public BoardDTO() {
-		
-		super();
-	}
-	
-	
+    private int num;
+    private String id;
+    private String name;
+    private String subject;
+    private String content;
+    private String regist_day;
+    private int hit;
+    private String ip;
 
-	public int getNum() {
-		return num;
-	}
+    public BoardDTO() {
+        super();        
+    }
 
-	public void setNum(int num) {
-		this.num = num;
-	}
+    public int getNum() {
+        return num;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public void setNum(int num) {
+        this.num = num;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getSubject() {
-		return subject;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+    public String getSubject() {
+        return subject;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public String getRegist_day() {
-		return regist_day;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public void setRegist_day(String regist_day) {
-		this.regist_day = regist_day;
-	}
+    public String getRegist_day() {
+        return regist_day;
+    }
 
-	public int getHit() {
-		return hit;
-	}
+    public void setRegist_day(String regist_day) {
+        this.regist_day = regist_day;
+    }
 
-	public void setHit(int hit) {
-		this.hit = hit;
-	}
+    public int getHit() {
+        return hit;
+    }
 
-	public String getIp() {
-		return ip;
-	}
+    public void setHit(int hit) {
+        this.hit = hit;
+    }
 
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-	
-	
-	
-	
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
 }
