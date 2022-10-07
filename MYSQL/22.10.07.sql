@@ -17,6 +17,23 @@
 CREATE DATABASE IF NOT EXISTS `bookmarketdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bookmarketdb`;
 
+-- 테이블 bookmarketdb.board 구조 내보내기
+CREATE TABLE IF NOT EXISTS `board` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(10) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `regist_day` varchar(30) DEFAULT NULL,
+  `hit` int DEFAULT NULL,
+  `ip` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- 테이블 데이터 bookmarketdb.board:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `board` DISABLE KEYS */;
+/*!40000 ALTER TABLE `board` ENABLE KEYS */;
+
 -- 테이블 bookmarketdb.book 구조 내보내기
 CREATE TABLE IF NOT EXISTS `book` (
   `b_id` varchar(10) NOT NULL,
@@ -76,14 +93,14 @@ CREATE TABLE IF NOT EXISTS `board` (
   `hit` int DEFAULT NULL,
   `ip` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 -- 테이블 데이터 webmarketdb.board:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
 INSERT INTO `board` (`num`, `id`, `name`, `subject`, `content`, `regist_day`, `hit`, `ip`) VALUES
-	(1, 'gumi', '이순신', '설맞이', '새해복많이..', '2022-10-05 13:47:42', 1, ''),
-	(2, 'iu', '아이유', '인사', '안녕하세여..', '2022-10-05 13:49:01', 1, ''),
-	(3, 'pks4877', '박근수', '123', '1234', '2022-10-06-13:41:59', 0, '0:0:0:0:0:0:0:1');
+	(1, 'gumi', '이순신', '설맞이', '새해복많이..', '2022-10-05 13:47:42', 9, ''),
+	(3, 'pks4877', '박근수', '123567', '1234', '2022-10-07 11:42:50', 13, '0:0:0:0:0:0:0:1'),
+	(4, 'admin', 'admin', '123', '123', '2022-10-07 13:13:27', 0, '0:0:0:0:0:0:0:1');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 
 -- 테이블 webmarketdb.member 구조 내보내기
@@ -100,9 +117,10 @@ CREATE TABLE IF NOT EXISTS `member` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 webmarketdb.member:~2 rows (대략적) 내보내기
+-- 테이블 데이터 webmarketdb.member:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`id`, `password`, `name`, `gender`, `birth`, `mail`, `phone`, `address`, `regist_day`) VALUES
+	('admin', 'admin1234', 'admin', '남', '2000/10/13', 'geunsu902@gmail.com', '010-1234-5678', '경일게임아카데미', '2022-10-07 13:07:01.949'),
 	('pks4877', '1234', '박근수', '남', '2000/10/13', 'pks4877@naver.com', '010-3230-4877', '경기도 양주시 화합로 1426번길 39 ', '2022-09-30 14:21:31.235');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 
