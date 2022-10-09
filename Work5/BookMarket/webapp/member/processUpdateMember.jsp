@@ -28,8 +28,7 @@
 		url="jdbc:mysql://localhost:3307/BookMarketDB"
 		driver="com.mysql.jdbc.Driver" user="root" password="1234" />
 	<sql:update dataSource="${dataSource}" var="resultSet">
-		update member set password=?, name=?,  gender=?, birth=?, mail=?, phone=?, address=?, whrer id = ?
-		<sql:param value="<%=id%>" />
+		update member set password=?, name=?,  gender=?, birth=?, mail=?, phone=?, address=?, where id = ?
 		<sql:param value="<%=password%>" />
 		<sql:param value="<%=name%>" />
 		<sql:param value="<%=gender%>" />
@@ -37,6 +36,7 @@
 		<sql:param value="<%=mail%>" />
 		<sql:param value="<%=phone%>" />
 		<sql:param value="<%=address%>" />
+		<sql:param value="<%=id%>" />
 	</sql:update>	
 		
 <c:if test="${resultSet>=1}">
