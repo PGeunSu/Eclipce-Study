@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MENU</title>
+</head>
+<body>
+	<div class="s598-gnb-top">
+		<div class="inner">
+			<h1>
+				<a class="s598-logo" href="#" target="_self"><img src="./images/gnb_logo_signiel.png"></a>
+			</h1>
+		</div>
+	</div>
+</body>
+</html>

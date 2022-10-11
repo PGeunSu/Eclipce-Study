@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MENU</title>
+</head>
+<body>
+	<div class="s598-gnb-top">
+		<div class="inner">
+			<h1>
+				<a class="s598-logo" href="#" target="_self"><img src="./images/gnb_logo_signiel.png" class="retinaimg"></a>
+			</h1>
+			<div class="s598-quick-combobox show">
+				<div class="quick-list">
+                        <a href="/global/ko.html" target="_blank" title="새창" class="ico-global"><span>글로벌</span></a>
+                        
+                        
+                            <a href="/global/ko/hotel-finder.html" target="_self">호텔찾기</a>
+                        
+                        
+                            <a href="https://lottehotelmembership.lottehotel.com/login/sso.jsp?token=" target="_blank" title="새창">
+                                <span>멤버십</span>
+                            </a>
+                        
+                        
+                        <a class="before-login-show" href="/global/ko/reservation/view-reservation.html">
+                            <span>예약조회</span>
+                        </a>
+                        
+                        
+                        <a class="before-login-show" href="/global/ko/member/login.html" target="_self">
+                            <span>로그인</span>
+                        </a>
+                        
+                        <a class="before-login-show" href="/global/ko/member/sign-up.html" target="_self">
+                            <span>회원가입</span>
+                        </a>
+                    </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
