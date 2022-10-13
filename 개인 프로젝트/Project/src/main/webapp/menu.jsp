@@ -2,17 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head> <!-- 스타일 적용 -->
-<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-dependencies.min.ACSHASHd41d8cd98f00b204e9800998ecf8427e.css" type="text/css">
-<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/templates/clientlib-basic.min.ACSHASH51a81fbda7b06de93c9f90f268cd5c56.css" type="text/css">
-<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-global/ko.min.ACSHASH90bb3e216f21b81b77438adfdac49bd1.css" type="text/css">	
-<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-base.min.ACSHASH985dfd4f4b8d35f936b21e46cd0c92c0.css" type="text/css">
-<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/templates/clientlib-basic.min.ACSHASH51a81fbda7b06de93c9f90f268cd5c56.css" type="text/css">
-<script type="text/javascript" src="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-dependencies/library/common.min.ACSHASHc5c5b83d87f57a24c817c20db81839cf.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="./js/Event.js"></script>
-<script>
-
-</script>
+	<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-dependencies.min.ACSHASHd41d8cd98f00b204e9800998ecf8427e.css" type="text/css">
+	<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/templates/clientlib-basic.min.ACSHASH51a81fbda7b06de93c9f90f268cd5c56.css" type="text/css">
+	<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-global/ko.min.ACSHASH90bb3e216f21b81b77438adfdac49bd1.css" type="text/css">	
+	<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-base.min.ACSHASH985dfd4f4b8d35f936b21e46cd0c92c0.css" type="text/css">
+	<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/templates/clientlib-basic.min.ACSHASH51a81fbda7b06de93c9f90f268cd5c56.css" type="text/css">
+	<script type="text/javascript" src="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-dependencies/library/common.min.ACSHASHc5c5b83d87f57a24c817c20db81839cf.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script type="text/javascript" src="./js/Event.js"></script>
 <meta charset="UTF-8">
 <title>MENU</title>
 </head>
@@ -21,7 +18,7 @@
 	<div class="s598-gnb-top">
 		<div class="inner">
 			<h1>
-				<a class="s598-logo" href="#" target="_self"><img src="./images/gnb_logo_signiel.png" class="retinaimg"></a>
+				<a class="s598-logo" href="#" target="_self"><img src="./images/menu/gnb_logo_signiel.png" class="retinaimg"></a>
 			</h1>
 			<div class="s598-quick-combobox show">
 				<div class="quick-list">
