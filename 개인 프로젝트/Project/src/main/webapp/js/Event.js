@@ -56,12 +56,35 @@ $(function(){ //메뉴바 리스트 구현
 	
 	
 	//footer select option	
-	$(".s593 .family-site .combobox__button").click(function(){ //닫혀있을 때
+	$(document).on(	"click",".s593 .family-site .combobox__button",function(){ 
 		
-		$(".s593 .family-site .combobox__button").addClass("is-opened")
-		$(".s593 .family-site .combobox__scroll").addClass("has-scrollbar").addClass("is-opened").css("display","block").css("touch-action","none")
+		$(this).toggleClass("is-opened") 
+		if($(".s593 .footer-site .combobox__scroll").hasClass("is-opened") == false){ //닫혀있을 때
+		$(".s593 .footer-site .combobox__scroll").addClass("has-scrollbar").addClass("is-opened").css("display","block").css("touch-action","none")			
+		}else{ //열려 있을 때
+			$(".s593 .footer-site .combobox__scroll").removeClass("is-opened").css("display","none")
+		};
 	});
 	
 	
+	
 	});
+	
+	//swiper
+	 var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
 		
