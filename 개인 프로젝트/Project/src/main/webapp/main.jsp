@@ -17,6 +17,8 @@
 	<link rel="stylesheet"href="https://unpkg.com/swiper/swiper-bundle.min.css" /> <!-- swiper -->
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	
+
+	
 	
 	
 <title>Main</title>
@@ -194,7 +196,21 @@
 													야경을 조망할 수 있으며 일몰과 일출을 한 자리의 감상할 수 있는 구내 유일의 호텔입니다.	
 												</p>
 											</div>
-											<div class="d088-weather"> <p class="d088-weather__title">현재 날씨</p></div>
+											<div class="d088-weather">
+							                    <p class="d088-weather__title">현재 날씨</p>
+							                    <div class="d088-weather__info">
+							                        <div class="d088-weather__text">
+							                            <span id="spanTime">
+							                            </span>
+							                        </div>
+							                        <div class="d088-weather__text2">
+							                            <span class="d088-weather__image">
+							                                <img id="weatherImg" src="./images/weather/ico_weathr_04.png" alt="weather image" class="retinaimg">
+							                            </span>
+							                            <span id="spanWeather">23.8℃(75)℉</span>
+							                        </div>	
+							                    </div>
+							                </div>
 										</div>
 										<div class="d088-section__right">
 											<div class="d088-map">
@@ -270,6 +286,107 @@
 							                </p>
 							            </div>
 							        </div>
+								</div>
+							</div>
+						</div>
+						<!-- 호텔 룸 소개 슬라이드 페이지 -->
+						<div class="s619-main-hotel-introduction aem-GridColumn aem-GridColumn--default--12">
+							<div class="s619 common-spacing-top-xxl common-spacing-bottom-xxl">
+								<div class="s619__inner">
+									<div class="s619__content">
+										<div class="s619-room">
+											<div class="s619-carousel slick-initialized slick-slider slick-dotted slick-keyboard" role="comlemntary">
+												<div aria-live="polite" aria-atomic="true" class="slick-ada screen--out"></div>
+												<button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display:block;">이전 슬라이드</button>
+												<div class="slick-list draggable">
+													<div class="slick-track" style="opacity:1; width:17918px; transform:translate3d(-1054px,0px,0px);">
+														<div class="slick-slide" data-slick-index="0" aria-hidden="true" tabindex="0" role="tabpanel" id="slick-slide00" 
+														aria-descripedby="slick-slide-control00" style="width: 1054px;">
+															<div>
+																<div class="s619-room__item" style="width:100%; display:inline-block;">
+																	<div class="s619-room__img">
+																		<img src="./images/roomSlide/room1.jpg" class="retinaimg">
+																	</div>
+																	<div class="s619-room__cont">
+											                            <strong class="s619-room__title">그랜드 디럭스 룸</strong>
+											                            <div class="s619-info">       
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">침대타입</span>
+											                                    <span class="s619-info__dd">더블</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">투숙인원</span>
+											                                    <span class="s619-info__dd">2 명</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">전망</span>
+											                                    <span class="s619-info__dd">시티뷰 / 리버뷰 / 전망욕실 </span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">객실면적</span>
+											                                    <span class="s619-info__dd">40~50 ㎡</span>
+											                                </p>                             
+											                            </div>
+											                            <div class="s619-room__cta">
+											                                <a href="#" class="s619-room__button" target="_self" tabindex="0">자세히 보기</a>
+											                            </div>
+											                        </div>
+																</div>
+															</div>
+														</div>
+														<div class="slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide01" 
+														aria-descripedby="slick-slide-control01" style="width: 1054px;">
+															<div>
+																<div class="s619-room__item" style="width:100%; display:inline-block;">
+																	<div class="s619-room__img">
+																		<img src="./images/roomSlide/room2.jpg" class="retinaimg">
+																	</div>
+																	<div class="s619-room__cont">
+											                            <strong class="s619-room__title">시그니엘 프리미어 룸</strong>
+											                            <div class="s619-info">       
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">침대타입</span>
+											                                    <span class="s619-info__dd">더블/트윈</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">투숙인원</span>
+											                                    <span class="s619-info__dd">2 명</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">전망</span>
+											                                    <span class="s619-info__dd">시티뷰 / 전망욕실 / 리버뷰 및 전망욕실 </span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">객실면적</span>
+											                                    <span class="s619-info__dd">56~65 ㎡</span>
+											                                </p>                             
+											                            </div>
+											                            <div class="s619-room__cta">
+											                                <a href="#" class="s619-room__button" target="_self" tabindex="-1">자세히 보기</a>
+											                            </div>
+											                        </div>
+																</div>
+														</div>
+														<div class="slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide02" 
+														aria-descripedby="slick-slide-control02" style="width: 1054px;"></div>
+														<div class="slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide03" 
+														aria-descripedby="slick-slide-control03" style="width: 1054px;"></div>
+														<div class="slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide04" 
+														aria-descripedby="slick-slide-control04" style="width: 1054px;"></div>
+														<div class="slick-slide" data-slick-index="5" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide05" 
+														aria-descripedby="slick-slide-control05" style="width: 1054px;"></div>
+														<div class="slick-slide" data-slick-index="6" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide06" 
+														aria-descripedby="slick-slide-control06" style="width: 1054px;"></div>
+														<div class="slick-slide" data-slick-index="7" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide07" 
+														aria-descripedby="slick-slide-control07" style="width: 1054px;"></div>
+					
+													</div>
+												</div>
+												<button class="slick-next slick-arrow" aria-label="Next" type="button" style="display:block;">다음 슬라이드</button>
+											</div>
+										</div>
+										<div class="s619-introduction"></div>
+									</div>
 								</div>
 							</div>
 						</div>
