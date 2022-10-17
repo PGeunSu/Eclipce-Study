@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `board` (
   PRIMARY KEY (`num`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 bookmarketdb.board:~1 rows (대략적) 내보내기
+-- 테이블 데이터 bookmarketdb.board:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
 INSERT INTO `board` (`num`, `id`, `name`, `subject`, `content`, `regist_day`, `hit`, `ip`) VALUES
 	(1, 'pks4877', '박근수', 'ㅎㅇ', 'ㅎㅇㅎㅇ\r\nㅎㅇㅎㅇ', '2022-10-09 16:19:09', 3, '0:0:0:0:0:0:0:1');
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 bookmarketdb.member:~1 rows (대략적) 내보내기
+-- 테이블 데이터 bookmarketdb.member:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`id`, `password`, `name`, `gender`, `birth`, `mail`, `phone`, `address`, `regist_day`) VALUES
 	('pks4877', '1234', '박근수', NULL, '//', '@naver.com', '', '', '2022-10-09 15:53:26.789');
