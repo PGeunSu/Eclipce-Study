@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +11,29 @@
 	<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-base.min.ACSHASH985dfd4f4b8d35f936b21e46cd0c92c0.css" type="text/css">
 	<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/templates/clientlib-basic.min.ACSHASH51a81fbda7b06de93c9f90f268cd5c56.css" type="text/css">
 	<script type="text/javascript" src="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-dependencies/library/common.min.ACSHASHc5c5b83d87f57a24c817c20db81839cf.js"></script>
-	<!-- Google MapAPI -->
-	<script type="text/javascript" src="https://maps.googleapis.com/maps-api-v3/api/js/49/12/intl/ko_ALL/common.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps-api-v3/api/js/49/12/intl/ko_ALL/util.js"></script>
 	<link rel="stylesheet" href="./css/slide.css" type="text/css">
 	<link rel="stylesheet"href="https://unpkg.com/swiper/swiper-bundle.min.css" /> <!-- swiper -->
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	
+	<script type="text/javascript" src="./js/Event.js"></script>
+	<script>
+	 $.getJSON(
+	            "https://api.openweathermap.org/data/2.5/weather?id=1835848&appid=079b8942e0b5aa9292436aca492ee8f0&units=metric",
+	            function (data) {
 
+	                var $cTemp = data.main.temp;
+	               
+
+	                $(".ctemp").prepend($cTemp);
+	              
+	                var $now = new Date();
+	                var $cDate = $now.getFullYear() + "년" + ($now.getMonth() + 1) + "월" + $now.getDate()
+	                    + "일 " + $now.getHours() + " : " + $now.getMinutes() + "\n";
+
+	                $(".cDate").prepend($cDate);
+	            }
+	        );
 	
-	
+	</script>
 	
 <title>Main</title>
 </head>
@@ -27,7 +41,7 @@
 	<div class="root responsivergrid wrapper">
 		<div class="aem-Grid aem-Grid--12 aem-Grid--default--12">
 			<header class="header aem-GridColumn aem-GridColumn--default--12">
-			 <!-- include 삽입 예정 -->
+			 <%@ include file="menu.jsp"%>
 			</header>
 			<main class="main aem-GridColumn aem-Grid--default--12">
 				<div class="aem-Grid aem-Grid--12 aem-Grid--default--12">
@@ -182,7 +196,6 @@
 						</div>
 						<!-- 시그니엘 서울 소개 Map API -->
 						<div class="d088-main-hotel-information aem-GridColumn aem-GridColumn--defalut--12">
-							<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHHsEkfAnoJV60JVFm4fRZNFSAQfVgqkY&amp;v=3&amp;libraries=places&amp;language=ko&amp;region=KR"></script>
 							<script type="text/javascript" src="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/vendor/googlemap.min.ACSHASHeb6728f04c99e4d95376746c40222b83.js"></script>
 							<script type="text/javascript" src="https://www.lottehotel.com/etc.clientlibs/lottehotel/components/common/content/common/d088-main-hotel-information/clientlibs/data.min.ACSHASH7aa54e3007cb01ea0e8af162efd15053.js"></script>
 							
@@ -200,14 +213,14 @@
 							                    <p class="d088-weather__title">현재 날씨</p>
 							                    <div class="d088-weather__info">
 							                        <div class="d088-weather__text">
-							                            <span id="spanTime">
+							                            <span id="spanTime" class="cDate">
 							                            </span>
 							                        </div>
 							                        <div class="d088-weather__text2">
 							                            <span class="d088-weather__image">
 							                                <img id="weatherImg" src="./images/weather/ico_weathr_04.png" alt="weather image" class="retinaimg">
 							                            </span>
-							                            <span id="spanWeather">23.8℃(75)℉</span>
+							                            <span class="ctemp">℃</span>
 							                        </div>	
 							                    </div>
 							                </div>
@@ -215,9 +228,19 @@
 										<div class="d088-section__right">
 											<div class="d088-map">
 												<div class="d088-map__area">
-                        							<iframe class="d088-map__area" frameborder="0" style="border:0;width:100%" 
-                        							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcG6XLlvSL0DQtg1G38wiT_r8BYN3RbWQ&amp;q=서울특별시%20송파구%20잠실6동%20올림픽로%20300%20시그니엘%20서울&amp;
-                        							language=ko&amp;region=KR" title="지도" allowfullscreen="" data-gtm-yt-inspected-18="true" data-gtm-yt-inspected-25="true"></iframe>
+                        							<div id="map" class="d088-map__area" style="border:0;width:100%;"></div>
+                        							 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=25865c9220776c3ab30a64088a76e6db"></script>
+                        							 <script>
+												        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+												            mapOption = {
+												                center: new kakao.maps.LatLng(37.8282, 127.0685), // 지도의 중심좌표
+												                level: 5 // 지도의 확대 레벨
+												            };
+												
+												        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+												        var map = new kakao.maps.Map(mapContainer, mapOption); 
+												    </script>
+                        							 	
                     							</div>
 												<div class="d088-map__location">
 							                        <p>
@@ -291,7 +314,7 @@
 						</div>
 						<!-- 호텔 룸 소개 슬라이드 페이지 -->
 						<div class="s619-main-hotel-introduction aem-GridColumn aem-GridColumn--default--12">
-							<div class="s619 common-spacing-top-xxl common-spacing-bottom-xxl">
+							<div class="s619 common-spacing-top--xxl common-spacing-bottom--xxl">
 								<div class="s619__inner">
 									<div class="s619__content">
 										<div class="s619-room">
@@ -366,40 +389,294 @@
 											                            </div>
 											                        </div>
 																</div>
-														</div>
+														 	</div>
+													   </div>
 														<div class="slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide02" 
-														aria-descripedby="slick-slide-control02" style="width: 1054px;"></div>
+														aria-descripedby="slick-slide-control02" style="width: 1054px;">
+															<div>
+																<div class="s619-room__item" style="width:100%; display:inline-block;">
+																	<div class="s619-room__img">
+																		<img src="./images/roomSlide/room3.jpg" class="retinaimg">
+																	</div>
+																	<div class="s619-room__cont">
+											                            <strong class="s619-room__title">시그니엘 프리미어 룸</strong>
+											                            <div class="s619-info">       
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">침대타입</span>
+											                                    <span class="s619-info__dd">더블/트윈</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">투숙인원</span>
+											                                    <span class="s619-info__dd">2 명</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">전망</span>
+											                                    <span class="s619-info__dd">시티뷰 / 전망욕실 / 리버뷰 및 전망욕실 </span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">객실면적</span>
+											                                    <span class="s619-info__dd">56~65 ㎡</span>
+											                                </p>                             
+											                            </div>
+											                            <div class="s619-room__cta">
+											                                <a href="#" class="s619-room__button" target="_self" tabindex="-1">자세히 보기</a>
+											                            </div>
+											                        </div>
+																</div>
+														 	</div>
+														
+														</div>
 														<div class="slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide03" 
-														aria-descripedby="slick-slide-control03" style="width: 1054px;"></div>
+														aria-descripedby="slick-slide-control03" style="width: 1054px;">
+															<div>
+																<div class="s619-room__item" style="width:100%; display:inline-block;">
+																	<div class="s619-room__img">
+																		<img src="./images/roomSlide/room4.jpg" class="retinaimg">
+																	</div>
+																	<div class="s619-room__cont">
+											                            <strong class="s619-room__title">프리미어 스위트 룸</strong>
+											                            <div class="s619-info">       
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">침대타입</span>
+											                                    <span class="s619-info__dd">더블/트윈</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">투숙인원</span>
+											                                    <span class="s619-info__dd">2 명</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">전망</span>
+											                                    <span class="s619-info__dd">시티뷰 </span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">객실면적</span>
+											                                    <span class="s619-info__dd">70~86 ㎡</span>
+											                                </p>                             
+											                            </div>
+											                            <div class="s619-room__cta">
+											                                <a href="#" class="s619-room__button" target="_self" tabindex="-1">자세히 보기</a>
+											                            </div>
+											                        </div>
+																</div>
+														 	</div>
+														
+														</div>
 														<div class="slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide04" 
-														aria-descripedby="slick-slide-control04" style="width: 1054px;"></div>
+														aria-descripedby="slick-slide-control04" style="width: 1054px;">
+															<div>
+																<div class="s619-room__item" style="width:100%; display:inline-block;">
+																	<div class="s619-room__img">
+																		<img src="./images/roomSlide/room5.jpg" class="retinaimg">
+																	</div>
+																	<div class="s619-room__cont">
+											                            <strong class="s619-room__title">코리안 스위트 룸</strong>
+											                            <div class="s619-info">       
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">침대타입</span>
+											                                    <span class="s619-info__dd">더블</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">투숙인원</span>
+											                                    <span class="s619-info__dd">2 명</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">전망</span>
+											                                    <span class="s619-info__dd">리버뷰</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">객실면적</span>
+											                                    <span class="s619-info__dd">84 ㎡</span>
+											                                </p>                             
+											                            </div>
+											                            <div class="s619-room__cta">
+											                                <a href="#" class="s619-room__button" target="_self" tabindex="-1">자세히 보기</a>
+											                            </div>
+											                        </div>
+																</div>
+														 	</div>
+														</div>
 														<div class="slick-slide" data-slick-index="5" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide05" 
-														aria-descripedby="slick-slide-control05" style="width: 1054px;"></div>
+														aria-descripedby="slick-slide-control05" style="width: 1054px;">
+															<div>
+																<div class="s619-room__item" style="width:100%; display:inline-block;">
+																	<div class="s619-room__img">
+																		<img src="./images/roomSlide/room6.jpg" class="retinaimg">
+																	</div>
+																	<div class="s619-room__cont">
+											                            <strong class="s619-room__title">코리안 스위트 룸</strong>
+											                            <div class="s619-info">       
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">침대타입</span>
+											                                    <span class="s619-info__dd">더블</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">투숙인원</span>
+											                                    <span class="s619-info__dd">2 명</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">전망</span>
+											                                    <span class="s619-info__dd">리버뷰</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">객실면적</span>
+											                                    <span class="s619-info__dd">84 ㎡</span>
+											                                </p>                             
+											                            </div>
+											                            <div class="s619-room__cta">
+											                                <a href="#" class="s619-room__button" target="_self" tabindex="-1">자세히 보기</a>
+											                            </div>
+											                        </div>
+																</div>
+														 	</div>
+														</div>
 														<div class="slick-slide" data-slick-index="6" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide06" 
-														aria-descripedby="slick-slide-control06" style="width: 1054px;"></div>
-														<div class="slick-slide" data-slick-index="7" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide07" 
-														aria-descripedby="slick-slide-control07" style="width: 1054px;"></div>
-					
-													</div>
+														aria-descripedby="slick-slide-control06" style="width: 1054px;">
+															<div>
+																<div class="s619-room__item" style="width:100%; display:inline-block;">
+																	<div class="s619-room__img">
+																		<img src="./images/roomSlide/room7.jpg" class="retinaimg">
+																	</div>
+																	<div class="s619-room__cont">
+											                            <strong class="s619-room__title">로얄 스위트 룸</strong>
+											                            <div class="s619-info">       
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">침대타입</span>
+											                                    <span class="s619-info__dd">더블</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">투숙인원</span>
+											                                    <span class="s619-info__dd">2 명</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">전망</span>
+											                                    <span class="s619-info__dd">시티뷰</span>
+											                                </p>
+											                                <p class="s619-info__item">
+											                                    <span class="s619-info__dt">객실면적</span>
+											                                    <span class="s619-info__dd">353 ㎡</span>
+											                                </p>                             
+											                            </div>
+											                            <div class="s619-room__cta">
+											                                <a href="#" class="s619-room__button" target="_self" tabindex="0">자세히 보기</a>
+											                            </div>
+											                        </div>
+																</div>
+														 	</div>	
+														</div>
 												</div>
 												<button class="slick-next slick-arrow" aria-label="Next" type="button" style="display:block;">다음 슬라이드</button>
 											</div>
 										</div>
-										<div class="s619-introduction"></div>
 									</div>
+										<div class="s619-introduction">
+								                    <a href="#" target="_self" class="s619-introduction__item">             
+								                         <div class="s619-introduction__img">
+								                            <img src="./images/roomSlide/20190102-350-1-mai-LTSG.jpg.thumb.480.480.jpg " alt="시그니엘 바 81" class="retinaimg" data-mobile="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-1-mai-LTSG.jpg.thumb.480.480.jpg " data-tablet="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-1-mai-LTSG.jpg.thumb.1440.1440.jpg " data-web="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-1-mai-LTSG.jpg.thumb.480.480.jpg ">
+								                         </div>
+								                         <p class="s619-introduction__text">다이닝</p>                   
+								                    </a>
+								                    <a href="#" target="_self" class="s619-introduction__item">             
+								                         <div class="s619-introduction__img">
+								                            <img src="./images/roomSlide/20190102-350-2-mai-LTSG.jpg.thumb.480.480.jpg " alt="시그니엘 웨딩" class="retinaimg" data-mobile="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-2-mai-LTSG.jpg.thumb.480.480.jpg " data-tablet="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-2-mai-LTSG.jpg.thumb.1440.1440.jpg " data-web="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-2-mai-LTSG.jpg.thumb.480.480.jpg ">
+								                         </div>
+								                         <p class="s619-introduction__text">웨딩</p>                   
+								                    </a>
+								                    <a href="#" target="_self" class="s619-introduction__item">             
+								                         <div class="s619-introduction__img">
+								                            <img src="./images/roomSlide/20190102-350-3-mai-LTSG.jpg.thumb.480.480.jpg " alt="서울월드타워" class="retinaimg" data-mobile="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-3-mai-LTSG.jpg.thumb.480.480.jpg " data-tablet="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-3-mai-LTSG.jpg.thumb.1440.1440.jpg " data-web="/content/dam/lotte-hotel/signiel/seoul/main/20190102-350-3-mai-LTSG.jpg.thumb.480.480.jpg ">
+								                         </div>
+								                         <p class="s619-introduction__text">주요명소</p>                   
+								                    </a>
+								        </div>
 								</div>
-							</div>
+							</div>	
 						</div>
 					</div>
+						<!-- 호텔 리워즈 혜택 -->
+						<div class="s508-main-membership-benefit aem-GridColumn aem-GridColumn--default--12">
+						  <div class="s508 common-spacing-top--m common-spacing-bottom--m">
+						    <div class="s508-rewords-benefit">
+						      <div class="inner">
+						        <div class="tit-area">
+						          <p class="tit">롯데호텔 리워즈 혜택</p>
+						        </div>
+						        <div class="benefit-list">
+						          <div class="benefit-item">
+						            <div class="img-area">
+						              <img src="./images/reward/pc-mai-rewards1.png" alt="선물 아이콘" />
+						            </div>
+						            <div class="txt-area">
+						              <span>회원 전용 이벤트를 누려보세요.</span>
+						            </div>
+						          </div>
+						
+						          <div class="benefit-item">
+						            <div class="img-area">
+						              <img src="./images/reward/pc-mai-rewards2.png" alt="멤버십 할인 아이콘" />
+						            </div>
+						            <div class="txt-area">
+						              <span>멤버십 회원만을 위해 할인된 가격을 제공합니다.</span>
+						            </div>
+						          </div>
+						
+						          <div class="benefit-item">
+						            <div class="img-area">
+						              <img src="./images/reward/pc-mai-rewards3.png" alt="포인트 아이콘" />
+						            </div>
+						            <div class="txt-area">
+						              <span>포인트를 적립하고, 현금처럼 실용적으로 사용하세요.</span>
+						            </div>
+						          </div>
+						        </div>
+						        <div class="btn-area">
+						          <a href="#" target="_blank" class="rewords-join-btn">
+						            <span>롯데호텔 리워즈 가입하기</span>
+						          </a>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<!-- 유튜브 영상 -->
+						<div class="s191-pkg-video aem-GridColumn aem-GridColumn--default--12">
+						  <div class="s191 common-spacing-top--xl common-spacing-bottom--mm">
+						    <div>
+						      <div class="s191__titles s191__title-2"></div>
+						
+						      <div class="s191__list s191__single-full s191__single-full-3" data-modal="group">
+						        <div class="card-item card-type card-type--video">
+						          <div class="card-item__inner">
+						            <div class="card-item__content">
+						              <a href="https://www.youtube.com/watch?v=XHvXMdJRswU&ab_channel=%EC%B6%98%EC%82%AC%EA%B5%AD%EC%A0%9C%EC%98%81%ED%99%94%EC%A0%9CChunsaInternationalFilmFestival" class="card-item__anchor" target="_blank" data-type="video" data-vendor="youtube" data-video="XHvXMdJRswU" title="레이어 열기">
+						                <img src="./images/reward/200721-1-1090-mai-seoul-signiel.jpg.thumb.1440.1440.jpg" class="card-item__img" />
+						                <span class="card-item__play" aria-hidden="true"></span>
+						              </a>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						
+						  </div>
+					</div>
+						<!-- 마지막 설명문 -->
+						<div class="s125-main-seo-copy aem-GridColumn aem-GridColumn--default--12">
+						    <div class="s125-main-seo-copy">
+						        <div class="s125 common-spacing-top--xl common-spacing-bottom--xxxl">
+						            <p class="s125__copy">시그니엘 서울은 한국을 대표하는 최초의 호화 랜드마크 호텔로 국내 최대 호텔 그룹인 롯데호텔앤리조트의 프리미엄 서비스를 즐기실 수 있습니다. 서울 송파구 잠실 역 인근에 위치한 시그니엘 서울은 롯데 백화점, 롯데 면세점, 롯데월드몰, 
+						            롯데월드 어드벤처 및 석촌호수와 인접해 있어 다양한 여가 시설들로의 이동이 매우 편리합니다. 국내 최고층 건물인 롯데월드타워에 위치한 시그니엘 서울은 한국의 아름다움을 현대적인 감각으로 풀어낸 객실에서 서울의 파노라믹한 스카이라인과 환상적인 야경을 조망할 수 
+						            있으며 일몰과 일출을 한 자리에서 감상할 수 있는 국내 유일의 호텔입니다. 뿐만 아니라 미식가들을 위한 천국으로 불리는 시그니엘 서울은 미쉐린 3스타 셰프 ‘야닉 알레노(Yannick Alléno)’가 ‘스테이(STAY)’ 레스토랑 운영과 더불어 호텔 내 모든 식음료에 대해 
+						            총괄 디렉팅을 전담하여 웨딩에서부터 인룸다이닝 메뉴에 이르기까지 세계적인 스타 셰프가 제안하는 맛과 스타일을 경험할 수 있습니다. 시그니엘 서울의 호텔 패키지, 객실 프로모션, 특별 할인상품, 객실 예약 할인 정보를 공식사이트에서 지금 바로 확인 해 보세요.</p>
+						        </div>
+						    </div>
+ 						</div>
 				</div>
 			</main>
-			
-			
-		
+			 <%@ include file="footer.jsp"%>
 		</div>
 	</div>
 	
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script type="text/javascript" src="./js/Event.js"></script>
-</body>
+</body>	
 </html>
