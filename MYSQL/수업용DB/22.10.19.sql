@@ -100,6 +100,29 @@ INSERT INTO `member` (`id`, `password`, `name`, `gender`, `birth`, `mail`, `phon
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 
 
+-- projectdb 데이터베이스 구조 내보내기
+CREATE DATABASE IF NOT EXISTS `projectdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `projectdb`;
+
+-- 테이블 projectdb.member 구조 내보내기
+CREATE TABLE IF NOT EXISTS `member` (
+  `userID` varchar(20) NOT NULL,
+  `userPassword` varchar(20) DEFAULT NULL,
+  `userEmail` varchar(30) DEFAULT NULL,
+  `userEnName` varchar(20) DEFAULT NULL,
+  `userKoName` varchar(20) DEFAULT NULL,
+  `userBirth` varchar(20) DEFAULT NULL,
+  `userNumber` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- 테이블 데이터 projectdb.member:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` (`userID`, `userPassword`, `userEmail`, `userEnName`, `userKoName`, `userBirth`, `userNumber`) VALUES
+	('pks4877', '1234', 'pks4877@naver.com', 'ParkGeunsu', '박근수', '2000.10.13', '010-3230-4877');
+/*!40000 ALTER TABLE `member` ENABLE KEYS */;
+
+
 -- webmarketdb 데이터베이스 구조 내보내기
 CREATE DATABASE IF NOT EXISTS `webmarketdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `webmarketdb`;
