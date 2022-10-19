@@ -9,41 +9,41 @@
                         <ul class="s591__brand">
                             <li>
                                 <a href="#" target="_blank">
-                                    <img src="./images/footer/footer_logo_signiel.png"
+                                    <img src="${pageContext.request.contextPath}/images/footer/footer_logo_signiel.png"
                                         alt="시그니엘 로고">
                                 </a>
                             </li>
 
                             <li>
                                 <a href="#" target="_blank">
-                                    <img src="./images/footer/footer_logo_lottehotel.png"
+                                    <img src="${pageContext.request.contextPath}/images/footer/footer_logo_lottehotel.png"
                                         alt="롯데호텔 로고">
                                 </a>
                             </li>
 
                             <li>
                                 <a href="#" target="_blank">
-                                    <img src="./images/footer/footer_logo_l7.png" alt="L7 ">
+                                    <img src="${pageContext.request.contextPath}/images/footer/footer_logo_l7.png" alt="L7 ">
                                 </a>
                             </li>
 
                             <li>
                                 <a href="#" target="_blank">
-                                    <img src="./images/footer/footer_logo_city.png"
+                                    <img src="${pageContext.request.contextPath}/images/footer/footer_logo_city.png"
                                         alt="롯데시티호텔 로고">
                                 </a>
                             </li>
 
                             <li>
                                 <a href="https://www.lotteresort.com" target="_blank">
-                                    <img src="./images/footer/footer_logo_resort.png"
+                                    <img src="${pageContext.request.contextPath}/images/footer/footer_logo_resort.png"
                                         alt="롯데리조트">
                                 </a>
                             </li>
 
                             <li>
                                 <a href="#" target="_blank">
-                                    <img src="./images/footer/footer_logo_vl.png" alt="실버타운">
+                                    <img src="${pageContext.request.contextPath}/images/footer/footer_logo_vl.png" alt="실버타운">
                                 </a>
                             </li>
                         </ul>
@@ -52,14 +52,14 @@
                                 <li>
                                     <a href="https://itunes.apple.com/kr/app/lotte-hotels-resorts/id1063239345?mt=8"
                                         class="app-store" target="_blank" title="새창">
-                                        <img src="./images/footer/footer_appstore.png"
+                                        <img src="${pageContext.request.contextPath}/images/footer/footer_appstore.png"
                                             alt="appstore">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://play.google.com/store/apps/details?id=com.lottehotels.global&amp;hl=ko"
                                         class="play-store" target="_blank" title="새창">
-                                        <img src="./images/footer/footer-googleplay.png"
+                                        <img src="${pageContext.request.contextPath}/images/footer/footer-googleplay.png"
                                             alt="googleplay">
                                     </a>
                                 </li>
@@ -68,7 +68,7 @@
                                 <li>
                                     <a target="_blank" data-js="sns" data-url="http://www.lottehotelmagazine.com">
                                         <!--a href="http://www.lottehotelmagazine.com" target="_blank" data-js="sns" data-url="http://www.lottehotelmagazine.com"-->
-                                        <img src="./images/footer/footer-lhm.png" alt="LHM">
+                                        <img src="${pageContext.request.contextPath}/images/footer/footer-lhm.png" alt="LHM">
                                     </a>
                                 </li>
 
@@ -76,7 +76,7 @@
                                     <a target="_self" data-js="sns"
                                         data-url="#">
                                         <!--a href="/content/lottehotel/global/ko/hotel-reviews.html" target="_self" data-js="sns" data-url="/content/lottehotel/global/ko/hotel-reviews.html"-->
-                                        <img src="./images/footer/footer-sns-tripa.png"
+                                        <img src="${pageContext.request.contextPath}/images/footer/footer-sns-tripa.png"
                                             alt="트립어드바이저 로고">
                                     </a>
                                 </li>
@@ -84,7 +84,7 @@
                                 <li>
                                     <a target="_blank" data-js="sns" data-url="https://www.facebook.com/signielhotels/">
                                         <!--a href="https://www.facebook.com/signielhotels/" target="_blank" data-js="sns" data-url="https://www.facebook.com/signielhotels/"-->
-                                        <img src="./images/footer/footer-sns-facebook.png"
+                                        <img src="${pageContext.request.contextPath}/images/footer/footer-sns-facebook.png"
                                             alt="페이스북 로">
                                     </a>
                                 </li>
@@ -93,7 +93,7 @@
                                     <a target="_blank" data-js="sns"
                                         data-url="https://www.instagram.com/signielhotels/">
                                         <!--a href="https://www.instagram.com/signielhotels/" target="_blank" data-js="sns" data-url="https://www.instagram.com/signielhotels/"-->
-                                        <img src="./images/footer/footer-sns-instagram.png"
+                                        <img src="${pageContext.request.contextPath}/images/footer/footer-sns-instagram.png"
                                             alt="인스타그램 로고">
                                     </a>
                                 </li>
@@ -102,7 +102,7 @@
                                     <a target="_blank" data-js="sns"
                                         data-url="https://www.youtube.com/user/LotteHotels">
                                         <!--a href="https://www.youtube.com/user/LotteHotels" target="_blank" data-js="sns" data-url="https://www.youtube.com/user/LotteHotels"-->
-                                        <img src="./images/footer/footer-sns-youtube.png"
+                                        <img src="${pageContext.request.contextPath}/images/footer/footer-sns-youtube.png"
                                             alt="유튜브 로고">
                                     </a>
                                 </li>
@@ -110,7 +110,7 @@
                                 <li>
                                     <a target="_blank" data-js="sns" data-url="https://blog.naver.com/lotte_hotels">
                                         <!--a href="https://blog.naver.com/lotte_hotels" target="_blank" data-js="sns" data-url="https://blog.naver.com/lotte_hotels"-->
-                                        <img src="./images/footer/footer-sns-blog.png"
+                                        <img src="${pageContext.request.contextPath}/images/footer/footer-sns-blog.png"
                                             alt="블로그 로고">
                                     </a>
                                 </li>
@@ -157,7 +157,7 @@
                         <div class="s592__desktop">
                             <div class="s592__info">
                                 <a href="#" target="_blank">
-                                    <img src="./images/footer/footer-logo.png" alt="롯데호텔 로고"
+                                    <img src="${pageContext.request.contextPath}/images/footer/footer-logo.png" alt="롯데호텔 로고"
                                         class="s592__logo">
                                 </a>
                                 <div class="s592-address">

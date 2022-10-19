@@ -18,7 +18,7 @@
 <body>
 	<div class="root responsivergrid wrapper">
 		<div class="aem-Grid aem-Grid--12 aem-Grid--default--12">
-		<%@ include file="menu.jsp" %>
+		<%@ include file="/menu.jsp" %>
 			<main class="main aem-GridColumn aem-GridColumn--default--12">
 			  <div class="aem-Grid aem-Grid--12 aem-Grid--default--12">
 			    <div id="container" class="ly-container">
@@ -31,7 +31,16 @@
 					              <div class="d532__inner">
 					                <div class="d532__inner-area">
 					                  <div class="d532-form input-form" data-validation="true">
-					                    <form action="#" method="post" id="loginForm" name="loginForm">
+					                  
+											<%
+								   				String error = request.getParameter("error");
+								   				if(error != null){%>
+								   					<script>
+								   						alert("아이디와 비밀번호를 확인해주세요");
+								   					</script>
+								   				<%} %>
+								   			
+					                    <form action="processLoginMember.jsp" method="post" id="loginForm" name="loginForm">
 					                      <div class="d532-form__title">
 					                        <h1>로그인</h1>
 					                      </div>
@@ -43,9 +52,9 @@
 					                            <div class="col">
 					                              <div class="input">
 					                                <div class="input__wrap input__wrap--text" data-required="required">
-					                                  <input type="text" class="o-input o-input--text offf" placeholder="아이디 혹은 리워즈 번호를 입력하세요" id="inp-id" maxlength="100" title="아이디 또는 리워즈 번호"
+					                                  <input type="text" class="o-input o-input--text offf" name="userID" placeholder="아이디 혹은 리워즈 번호를 입력하세요" id="inp-id" maxlength="100" title="아이디 또는 리워즈 번호"
 					                                    aria-describedby="phd-id" value="" data-onlyn="engNumSpcIdLogin" data-checktype="vali" autocomplete="off" aria-required="true"/>
-					                              <!--     <button type="button" class="input__removetext">삭제</button> -->
+					                             
 					                                </div>
 					                              </div>
 					                            </div>
@@ -57,9 +66,9 @@
 					                              <div class="input">
 					                                <div class="input__wrap input__wrap--password" data-required="required">
 					                                  <input type="password" class="o-input o-input--password offf" placeholder="비밀번호를 입력하세요." id="inp-pw"maxlength="20" title="비밀번호"
-					                                    aria-describedby="phd-pw" name="password" value="" data-onlyn="vnull"data-checktype="vali"aria-required="true"
+					                                    aria-describedby="phd-pw" name="userPassword" value="" data-onlyn="vnull"data-checktype="vali"aria-required="true"
 					                                  />
-					                                <!--   <button type="button" class="input__removetext">삭제</button> -->
+					                                
 					                                </div>
 					                              </div>
 					                            </div>
@@ -83,10 +92,10 @@
 					                            </div>
 					                          </div>
 					                          <div class="row d532-txt-btn-box">
-					                            <a href="/global/ko/member/login/forgot-privilege-number.html" class="d532-txt-btn mgr15">
+					                            <a href="#" class="d532-txt-btn mgr15">
 					                              <span class="d532-txt-btn--rewards"> 리워즈 번호 / 아이디 찾기 </span>
 					                            </a>
-					                            <a href="/global/ko/member/login/forgot-password.html" class="d532-txt-btn d532-txt-btn--password mal15">
+					                            <a href="#" class="d532-txt-btn d532-txt-btn--password mal15">
 					                              <span> 비밀번호 찾기 </span>
 					                            </a>
 					                          </div>
@@ -103,7 +112,7 @@
 				</div>				
 			</div>
 		</main>
-				<%@ include file="footer.jsp" %>
+				<%@ include file="/footer.jsp" %>
 		</div>
 	</div>
 </body>

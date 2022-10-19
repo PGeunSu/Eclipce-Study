@@ -11,12 +11,13 @@
 
 </style>
 
+<!-- ${pageContext.request.contextPath} : 다른 경로의 폴더로 include시 경로가 바뀌어 이미지를 못불러온 현상이 일어남 (절대경로로 값을 넣어줌으로 서 오류 해결) -->
 <body>
 	<div class="s598-gnb-pc" style="height:86px;">
 	<div class="s598-gnb-top" style="position:fixed;">
 		<div class="inner">
 			<h1>
-				<a class="s598-logo" href="#" target="_self"><img src="./images/menu/gnb_logo_signiel.png" class="retinaimg"></a>
+				<a class="s598-logo" href="#" target="_self"><img src="${pageContext.request.contextPath}/images/menu/gnb_logo_signiel.png" class="retinaimg"></a>
 			</h1>
 			<div class="s598-quick-combobox show">
 				<div class="quick-list">
