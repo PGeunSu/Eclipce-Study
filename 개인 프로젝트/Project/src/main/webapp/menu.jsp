@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -10,23 +11,30 @@
       }
 
 </style>
-
 <!-- ${pageContext.request.contextPath} : 다른 경로의 폴더로 include시 경로가 바뀌어 이미지를 못불러온 현상이 일어남 (절대경로로 값을 넣어줌으로 서 오류 해결) -->
 <body>
 	<div class="s598-gnb-pc" style="height:86px;">
 	<div class="s598-gnb-top" style="position:fixed;">
 		<div class="inner">
 			<h1>
-				<a class="s598-logo" href="#" target="_self"><img src="${pageContext.request.contextPath}/images/menu/gnb_logo_signiel.png" class="retinaimg"></a>
+				<a class="s598-logo" href="${pageContext.request.contextPath}/main.jsp" target="_self"><img src="${pageContext.request.contextPath}/images/menu/gnb_logo_signiel.png" class="retinaimg"></a>
 			</h1>
 			<div class="s598-quick-combobox show">
 				<div class="quick-list">
-                        <a href="#" target="_blank" title="새창" class="ico-global"><span>글로벌</span></a>
-                        <a href="#" target="_self">호텔찾기</a>
-                        <a href="https://lottehotelmembership.lottehotel.com/login/sso.jsp?token=" target="_blank" title="새창"><span>멤버십</span></a>
+                        <a href="#" class="ico-global"><span>글로벌</span></a>
+                        <a href="#" >호텔찾기</a>
+                        <a href="#" ><span>멤버십</span></a>
                         <a class="before-login-show" href="#"><span>예약조회</span></a>
-                        <a class="before-login-show" href="#" target="_self"><span>로그인</span></a>
-						<a class="before-login-show" href="#" target="_self"><span>회원가입</span></a>
+                        <c:choose>
+							<c:when test="${empty sessionId}">
+								<a class="before-login-show" href="<c:url value="/member/login.jsp"/>">로그인</a>
+								<a class="before-login-show" href="<c:url value="/member/signup.jsp"/>">회원가입</a>
+							</c:when>
+							<c:otherwise>
+								<a class="before-login-show" href="<c:url value="/member/logoutMember.jsp"/>">로그아웃</a>
+								<a class="before-login-show" href="<c:url value="/member/updateMember.jsp"/>">회원수정</a>
+							</c:otherwise>
+						</c:choose>
                     </div>
                     <div class="quick-site-ui-sel-wrapper"><!-- 아직 추가 안 함 --></div>
 			</div>

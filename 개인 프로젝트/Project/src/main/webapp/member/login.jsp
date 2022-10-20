@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/templates/clientlib-member-login.min.ACSHASH9442ec28ecc749a4f2a715a896637b26.css" type="text/css">
 	<script type="text/javascript" src="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-dependencies/library/common.min.ACSHASHc5c5b83d87f57a24c817c20db81839cf.js"></script>
 	<link rel="stylesheet" href="./css/slide.css" type="text/css">
-	<script type="text/javascript" src="./js/Event.js"></script>
+	<script type="text/javascript" src="../js/Event.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

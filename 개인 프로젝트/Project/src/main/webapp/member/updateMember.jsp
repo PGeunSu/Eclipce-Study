@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,22 +16,38 @@
 	<script type="text/javascript" src="../js/Event.js"></script>
 	<script type="text/javascript" src="../js/member.js"></script>
 
-<title>회원가입</title>
+<title>회원수정</title>
+
+<% //session에 저장돼 있는 아이디 정보를 불러옴
+	String sessionId = (String) session.getAttribute("sessionId");
+%>
+
+<sql:setDataSource var="dataSource" url="jdbc:mysql://localhost:3307/ProjectDB"
+  	 driver="com.mysql.jdbc.Driver" user="root" password="1234" />
+
+
+	<sql:query dataSource="${dataSource}" var="resultSet">
+		select * from member where userID=?	
+		<sql:param value ="<%=sessionId %>"/>
+	</sql:query>
+
 </head>
 <body>
+		<c:forEach var="row" items="${resultSet.rows}">
+			
 	<div class="root responsivergrid wrapper">
 		<div class="aem-Grid aem-Grid--12 aem-Grid--default--12">
 				<%@include file="/menu.jsp" %>
 			<main class="main aem-GridColumn aem-GridColumn--default--12">
 				  <div class="aem-Grid aem-Grid--12 aem-Grid--default--12">
 				    <div id="container" class="ly-container">
-						<div>
+						<div>w
 							<div class="d000 d000-">
 								<div class="d000__inner">
 									<div class="location">
-							            <span> <a href="/global/ko.html">홈</a> </span>
-							             <span> <a href="/global/ko/member/join.html">롯데호텔 회원가입 및 오프라인 가입 회원 인증 | 롯데호텔</a> </span>  
-							            <span> 회원 정보 입력</span>
+							            <span> </span>
+							             <span> </span>  
+							            <span> 회원 수정</span>
 							        </div>
 								</div>
 							</div>
@@ -38,7 +56,7 @@
 								<div class="s009-content-h1 aem-GridColumn aem-GridColumn--default--12">
 									<div class="s009  common-spacing-bottom--ss">
 								        <div class="s009__inner-area">
-								            <h1 class="s009__headline">회원 정보 입력</h1>
+								            <h1 class="s009__headline">회원 수정</h1>
 								        </div>
 								    </div>
 								</div>
@@ -48,12 +66,11 @@
 										<div class="step-process-area type02">
 											<!-- 절차 표시 -->
 											<ol class="step-process">
-												<li><a href="#" class="is-done">약관 동의</a></li>
-												<li><a href="#" class="is-active">회원 정보 입력</a></li>
-												<li><a href="#" class="is-done">가입 완료</a></li>
+												<li><a href="#" class="is-active">회원 수정</a></li>
+												<li><a href="#" class="is-done">수정 완료</a></li>
 											</ol>
 										</div>
-										<form action="processAddMember.jsp" method="get" class="join__form" id="memberInfoForm" name="memberInfoForm" onsubmit="return checkForm()">
+										<form action="processUpdateMember.jsp" method="get" class="join__form" id="memberInfoForm" name="memberInfoForm" onsubmit="return checkForm()">
 											<div class="d528-inner">
 												<div class="non-member input-form" data-validation="true">
 													<div class="form-area rewords-join-area">
@@ -73,13 +90,12 @@
 																			<label for="inp-userId" class="input-title f-bold">아이디*</label>
 																			<div class="input">
 																				<div class="input-box input__wrap input__wrap--text" data-required="required">
-																					<input name="userID" type="text" class="o-input o-input--text vali" placeholder="사용할 아이디를 입력하세요" id="inp-userId" title="아이디" maxlength="30" aria-describedby="phd-userId" data-onlyn="engNumSpcId" data-checktype="vali|overlap" data-v-id="id" autocomplete="off" aria-required="true" data-vali="false">
-																					<button type="button" class="input__removetext">삭제</button>
+																					<input name="userID" type="text" class="o-input o-input--text vali" placeholder="사용할 아이디를 입력하세요" id="inp-userId" title="아이디" maxlength="30" value="<c:out value='${row.userID}'/>" readonly>
+													
 																				</div>
 																			</div>
 																		</div>
-																		<button id="btn-idDuplicateConfirm" onclick="DuplicateId(this.form)" type="button" class="input__overlap wid-30p mt-31 bg-gray">중복확인</button>
-																		<input type="hidden" name="idCheckResult" value="0">
+																		
 																	</div>
 																</div>
 																<!-- 이메일 -->
@@ -89,14 +105,10 @@
 																			<label for="inp-userEmail" class="input-title f-bold">이메일*</label>
 																			<div class="input">
 																				<div class="input-box input__wrap input__wrap--text" data-required="required">
-																					<input data-input="targetAuthEmail" name="userEmail" type="email" data-onlyn="emailn" data-checktype="vali|overlap|auth" class="vali o-input o-input--email" placeholder="사용할 이메일을 입력하세요" id="inp-userEmail" title="이메일" maxlength="100" aria-describedby="phd-userEmail" data-v-id="email" aria-required="true" data-vali="false">
+																					<input data-input="targetAuthEmail" name="userEmail" type="email" data-onlyn="emailn" data-checktype="vali|overlap|auth" class="vali o-input o-input--email" placeholder="사용할 이메일을 입력하세요" id="inp-userEmail" title="이메일" maxlength="100" value="<c:out value='${row.userEmail}'/>" readonly>
 																			</div>
 																			</div>
 																		</div>
-															
-																		<button type="button" id="btn-emailDuplicateConfirm" onclick="DuplicateEmail(this.form)" class="input__overlap wid-30p bg-gray">중복확인</button>
-																		<input type="hidden" name="emailCheckResult" value="0">
-																		
 													
 																	</div>
 																</div>
@@ -108,8 +120,8 @@
 																			<input type="hidden">
 																			<div class="input">
 																				<div class="input-box input__wrap input__wrap--password" data-required="required">
-																					<input type="password" class="o-input o-input--password" placeholder="비밀번호를 입력하세요." id="inp-userPassword" aria-describedby="phd-userPassword" name="userPassword" maxlength="20" title="비밀번호" data-v-id="password" aria-required="true">
-																					<button type="button" class="input__removetext">삭제</button>
+																					<input type="password" class="o-input o-input--password" placeholder="비밀번호를 입력하세요." id="inp-userPassword" aria-describedby="phd-userPassword" name="userPassword" maxlength="20" title="비밀번호" value="<c:out value='${row.userPassword}'/>">
+																					
 																				</div>
 																			</div>
 																		</div>
@@ -119,7 +131,7 @@
 																			<div class="input">
 																				<div class="input-box input__wrap input__wrap--password" data-required="required">
 																					<input type="password" class="o-input o-input--password" placeholder="한번 더 같은 비밀번호를 입력하세요" id="inp-userRePassword" aria-describedby="phd-userRePassword" name="UserPassword_confirm" maxlength="20" title="비밀번호재입력" data-v-id="repassword" aria-required="true">
-																					<button type="button" class="input__removetext">삭제</button>
+																					
 																				</div>
 																			</div>
 																		</div>
@@ -133,8 +145,8 @@
 																			<div class="input">
 																				
 																				<div class="input-box input__wrap input__wrap--text" data-required="required">
-																					<input name="userEnFirstName" type="text" class="o-input o-input--text" placeholder="영문 성을 입력하세요." id="inp-lastNmEngOnly" title="Hong(성)" maxlength="30" data-action="engfirstc" data-onlyn="engame" data-checktype="vali" aria-describedby="phd-lastNmEng" autocomplete="off" aria-required="true">
-																					<button type="button" class="input__removetext">삭제</button>
+																					<input name="userEnFirstName" type="text" class="o-input o-input--text" placeholder="영문 성을 입력하세요." id="inp-lastNmEngOnly" title="Hong(성)" maxlength="30" value="<c:out value='${row.userEnFirstName}'/>">
+																					
 																				</div>
 																				
 																			</div>
@@ -144,8 +156,8 @@
 																			<div class="input">
 																			
 																				<div class="input-box input__wrap input__wrap--text" data-required="required">
-																					<input name="userEnLastName" type="text" class="o-input o-input--text" placeholder="영문 이름을 입력하세요." id="inp-firstNmEngOnly" title="Gildong(이름)" maxlength="30" data-action="engfirstc" data-onlyn="engame" data-checktype="vali" aria-describedby="phd-firstNmEng" autocomplete="off" aria-required="true">
-																					<button type="button" class="input__removetext">삭제</button>
+																					<input name="userEnLastName" type="text" class="o-input o-input--text" placeholder="영문 이름을 입력하세요." id="inp-firstNmEngOnly" title="Gildong(이름)" maxlength="30"value="<c:out value='${row.userEnLastName}'/>">
+																					
 																				</div>
 																				
 																			</div>
@@ -164,8 +176,8 @@
 																			<label for="inp-nameKor" class="input-title f-bold">한글 이름*</label>
 																			<div class="input">
 																				<div class="input-box input__wrap input__wrap--text" data-required="required">
-																					<input name="userKoName" type="text" class="o-input o-input--text" placeholder="성명(한글)" id="inp-nameKor" title="성명(한글)" maxlength="12" aria-describedby="phd-nameKor" data-onlyn="kname" data-checktype="vali" autocomplete="off" aria-required="true">
-																					<button type="button" class="input__removetext">삭제</button>
+																					<input name="userKoName" type="text" class="o-input o-input--text" placeholder="성명(한글)" id="inp-nameKor" title="성명(한글)" maxlength="12" value="<c:out value='${row.userKoName}'/>">
+																					
 																				</div>
 																			</div>
 																		</div>
@@ -179,10 +191,7 @@
 																			<div class="input">
 																				<div class="input-box input__wrap input__wrap--text" data-day-type="year" data-required="required">
 																					
-																						<input name="userBirth" type="text" class="o-input o-input--text" placeholder="YYYY.MM.DD" id="birthdayY" title="생년월일" maxlength="10" aria-describedby="phd-birth" data-action="kbirth" data-onlyn="kbirth" data-checktype="vali" autocomplete="off" aria-required="true">
-																					
-										
-																					<button type="button" class="input__removetext">삭제</button>
+																						<input name="userBirth" type="text" class="o-input o-input--text" placeholder="YYYY.MM.DD" id="birthdayY" title="생년월일" maxlength="10" value="<c:out value='${row.userBirth}'/>">
 																				</div>
 																			</div>
 																		</div>
@@ -197,13 +206,12 @@
 																			<!-- 비회원 > 회원전환 시 연락처인증 필요 -->
 																			
 																			
-																				<input data-input="targetAuthTel" name="userNumber" type="tel" class="o-input o-input--tel vali" placeholder="전화번호를 입력하세요" id="inp-phoneNo" title="연락처" maxlength="30" aria-describedby="phd-phoneNo" data-action="numRlace" data-onlyn="telno" data-checktype="vali|auth" aria-required="true" data-vali="false">
+																				<input data-input="targetAuthTel" name="userNumber" type="tel" class="o-input o-input--tel vali" placeholder="전화번호를 입력하세요" id="inp-phoneNo" title="연락처" maxlength="30" value="<c:out value='${row.userNumber}'/>">
 																			
-																			<button type="button" class="input__removetext">삭제</button>
+																		
 																		</div>
 																	</div>
 																</div>
-																	<button type="button" class="input__overlap wid-40p bg-gray" disabled="disabled" data-button="requestAuthTel">인증번호 요청</button>
 																</div>
 															</div>
 														</div>
@@ -215,11 +223,11 @@
 												<div class="inner ui-footer-static static">
 												  <div class="btn-group">
 												    <div class="btn-area">
-												      <button type="reset" class="btn prev-btn bg-black" onclick="reset()">
-												        <span>취소</span>
+												      <button type="submit" class="btn prev-btn bg-black">
+												        <span>수정</span>
 												      </button>
-												      <button type="submit" class="btn next-btn bg-black" onclick="resetAction(this.form)">
-												        <span>다음</span>
+												      <button type="button" class="btn next-btn bg-red" onclick="deleteMemberConfirm()">
+												        <span>회원 탈퇴</span>
 												      </button>
 												    </div>
 												  </div>
@@ -237,5 +245,21 @@
 			<%@include file="/footer.jsp" %>
 		</div>
 	</div>
+		</c:forEach>
 </body>
+
+<script type="text/javascript">
+function deleteMemberConfirm(){
+	var result = confirm("정말 회원탈퇴를 하시겠습니까?");
+	if(result){
+		location.href="deleteMember.jsp";
+		alert("탈퇴되었습니다.");
+	}else{
+		alert("취소되었습니다");
+		return;
+	}
+}
+</script>
 </html>
+
+
