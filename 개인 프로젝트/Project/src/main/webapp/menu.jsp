@@ -33,6 +33,7 @@
 							<c:otherwise>
 								<a class="before-login-show" href="<c:url value="/member/logoutMember.jsp"/>">로그아웃</a>
 								<a class="before-login-show" href="<c:url value="/member/updateMember.jsp"/>">회원수정</a>
+								<a class="nav-link" href="<c:url value="/boardListAction.do?pageNum=1"/>">게시판</a>
 							</c:otherwise>
 						</c:choose>
                     </div>
