@@ -16,6 +16,7 @@ public class BWriteCommand implements BCommand {
 
 		BoardDAO bDAO = BoardDAO.getInstance();
 		BoardDTO boardDTO = new BoardDTO();
+		
 
 		boardDTO.setId(request.getParameter("id"));
 		boardDTO.setName(request.getParameter("name"));
