@@ -29,7 +29,7 @@
 	                var $cDate = $now.getFullYear() + "년" + ($now.getMonth() + 1) + "월" + $now.getDate()
 	                    + "일 " + $now.getHours() + " : " + $now.getMinutes() + "\n";
 
-	                $(".cDate").prepend($cDate);
+	                $(".cDate")	.prepend($cDate);
 	            }
 	        );
 	
@@ -56,13 +56,10 @@
 											<div class="swiper-slide"><img src="./images/mainSlide/mainSlide1.jpg"></div>
 											<div class="swiper-slide"><img src="./images/mainSlide/mainSlide2.jpg"></div>
 											<div class="swiper-slide"><img src="./images/mainSlide/mainSlide3.jpg"></div>
-										
 										</div>
-									
 									<div class="swiper-button-next"></div>
 									<div class="swiper-button-prev"></div>
 									<div class="swiper-button-pagination"></div>
-									
 									</div>
 								</div>
 							</div>

@@ -77,12 +77,12 @@
 							</section>
 						</li>
 						<li class="menu-1depth">
-							<a class="menu-1depth-text "href="#" target="_self" data-menu-idx="1"><span>객실</span></a>
+							<a class="menu-1depth-text "href="${pageContext.request.contextPath}/room.jsp	" target="_self" data-menu-idx="1"><span>객실</span></a>
 							<section class="menu-panel s598__menu-panel--not-1-5" data-section-idx="1">
 							  <div class="panel-wrap">
 							    <div class="panel-align panel-ttl">
 							      <div class="panel-1depth">
-							        <a class="menu-1depth-ttl" href="#" target="_self"> 객실 </a>
+							        <a class="menu-1depth-ttl" href="${pageContext.request.contextPath}/room.jsp" target="_self"> 객실 </a>
 							      </div>
 							    </div>
 							    <div class="panel-align panel-category">

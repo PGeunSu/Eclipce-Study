@@ -1,4 +1,7 @@
 <%@page import="mvc.model.BoardDTO"%>
+<%@page import="reply.Reply"%>
+<%@page import="reply.ReplyDAO"%>
+<%@page import="java.util.ArrayList" %>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -76,8 +79,12 @@
 										<!-- 목록 버튼 -->
 										<div class="s072__cta">
 											<a href="<c:url value="/boardListAction.do?pageNum=1"/>" class="s072__button"><span>목록</span></a>
-											<a><span><input class="s072__button" type="reset"  value="취소"></span></a>
-											<a><span><input class="s072__button" type="submit" value="수정"></span></a>
+												<c:set var="userId" value="<%=notice.getId()%>" />
+													<c:if test="${sessionId==userId}">
+														<a><span><input class="s072__button" type="submit" value="수정"></span></a>
+														<a class="s072__button" href="./boardDeleteAction.do?num=<%=notice.getNum()%>&pageNum=<%=nowPage%>"	
+															class="btn btn-danger">삭제</a> 
+													</c:if>
 										</div>
 									
 									</div>

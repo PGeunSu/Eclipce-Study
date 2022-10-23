@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-base.min.ACSHASH985dfd4f4b8d35f936b21e46cd0c92c0.css" type="text/css">
 <link rel="stylesheet" href="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-global/ko.min.ACSHASH90bb3e216f21b81b77438adfdac49bd1.css" type="text/css">
 <script type="text/javascript" src="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-dependencies/library/common.min.ACSHASHc5c5b83d87f57a24c817c20db81839cf.js"></script>
+<script type="text/javascript" src="https://www.lottehotel.com/etc.clientlibs/lottehotel/clientlibs/clientlib-dependencies.min.ACSHASHc05084d7f4367a8a4cca24c7b392c389.js"></script>
 <link rel="stylesheet" href="http://localhost:8080/Project/css/slide.css" type="text/css">
 <script type="text/javascript" src="http://localhost:8080/Project/js/Event.js"></script>
 <title>게시판</title>
@@ -41,7 +42,7 @@
 						 </div>
 					      </div>
 					</div>
-					
+					<form action='<c:url value="./boardListAction.do" />' method="post">
 			      	<div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
 			        <div class="aem-Grid aem-Grid--12 aem-Grid--default--12">
 				        	<div class="s009-content-h1 aem-GridColumn aem-GridColumn--default--12">
@@ -57,36 +58,24 @@
 									  <div class="d016-option__content">
 									    <div class="d016-option__detail">
 									      <div class="d016-option__select">
-									        <div data-js="combobox" class="combobox combobox--2" style="z-index: 97">
-									          <select name="list_type" id="list_type" title="검색" class="combobox combobox--2 is-ready" tabindex="-1">
-									            <option value="all">전체</option>
-									            <option value="title">제목</option>
-									            <option value="contents">내용</option>
+									        <div class="combobox combobox--2" style="z-index: 97">
+									          <select name="items" class="combobox--2" style="width:100px; font-size: 16px; border:1px solid rgba(0, 0, 0, 0.3);">
+									            <option value="subject">제목</option>
+									            <option value="name">글쓴이</option>
+									            <option value="content">내용</option>	
 									          </select>
-									          <div class="combobox__button" tabindex="0" role="combobox" aria-autocomplete="list" title="검색" id="combobox__button--2">
-									            <span class="combobox__status" data-id="0">전체</span>
-									          </div>
-									          <div class="combobox__scroll" style="max-height: 154px">
-									            <ul class="combobox__list" id="combobox__list--2" role="listbox">
-									              <li class="combobox__item is-active" id="combobox__item--2-0">전체</li>
-									              <li class="combobox__item" id="combobox__item--2-1">제목</li>
-									              <li class="combobox__item" id="combobox__item--2-2">내용</li>
-									            </ul>
-									          </div>
 									        </div>
 									      </div>
 									      
 									      <div class="d016-option__search">
 									        <div class="input input--2">
 									          <div class="input__wrap input__wrap--text">
-									            <span class="input__placeholder" id="phd-input_search">검색어를 입력해주세요</span>
-									            <input type="text" class="o-input o-input--text" id="label-input_search" title="검색어" autocomplete="off" />
-									            <button type="button" class="input__removetext">삭제</button>
+									            <input name="text" type="text" class="o-input o-input--text" placeholder="검색어를 입력하세요" />
 									          </div>
 									        </div>
-									        <button type="button" class="d016-option__button">
+									        <input type="submit" class="d016-option__button" id="btnAdd" value="검색">
 									          <span> 검색 </span>
-									        </button>
+									        
 									      </div>
 									    </div>
 									  </div>
@@ -148,6 +137,7 @@
 							</div>
 			          	</div>
 					</div>
+					 </form>
 				</div>				
 			</div>
 		</main>
