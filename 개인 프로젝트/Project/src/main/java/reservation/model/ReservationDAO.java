@@ -32,7 +32,7 @@ public class ReservationDAO {
 			result = new ArrayList<RoomDTO>();
 	
 			con = pool.getConnection();
-			sql = "select * from room_tbl where room_capacity >=?";
+			sql = "select * from room where room_capacity >=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, people);
 			rs = pstmt.executeQuery();
@@ -72,7 +72,7 @@ public class ReservationDAO {
 				Date b = sdf.parse(r_checkout);
 					
 				con = pool.getConnection();
-				sql = "select R_CHECKIN,R_CHECKOUT from reservation_tbl where R_TYPE=?";
+				sql = "select R_CHECKIN,R_CHECKOUT from reservation where R_TYPE=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, result.get(i).getRoom_type());
 				rs = pstmt.executeQuery();
@@ -106,7 +106,7 @@ public class ReservationDAO {
 		for(String r : room) {
 			try {
 				con = pool.getConnection();
-				sql = "select room_type, room_size, room_capacity,room_price,room_img from room_tbl where room_type=?";
+				sql = "select room_type, room_size, room_capacity,room_price,room_img from room where room_type=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, r);				
 				rs = pstmt.executeQuery();
@@ -132,7 +132,7 @@ public class ReservationDAO {
 		return result;
 	}
 	
-	/** 예약할 방의 정보를 매개변수로 받아서 db reservation_tbl에 예약 데이터를 저장하는 메서드**/
+	/** 예약할 방의 정보를 매개변수로 받아서 db reservation에 예약 데이터를 저장하는 메서드**/
 	public int insertRoom(ReservationDTO r) {
 		int result = 0;
 		Connection con = null;
@@ -142,7 +142,7 @@ public class ReservationDAO {
 
 			try {
 				con = pool.getConnection();
-				sql = "insert into reservation_tbl values (reservation_seq.nextval,?,?,?,TO_DATE(?,'YYYY-MM-DD'),TO_DATE(?,'YYYY-MM-DD'),?,?,sysdate)";
+				sql = "insert into reservation values (1,?,?,?,?,?,?,?,1)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, r.getR_id());				
 				pstmt.setInt(2, r.getR_adults());				
@@ -172,7 +172,7 @@ public class ReservationDAO {
 
 			try {
 				con = pool.getConnection();
-				sql = "select r_number,r_adults,r_kids,to_char(r_checkin,'YYYY-MM-DD DAY') r_checkin, to_char(r_checkout,'YYYY-MM-DD DAY') r_checkout,r_type,r_price,to_char(r_time,'YYYY-MM-DD DAY') r_time from reservation_tbl where r_id=? order by r_checkin";
+				sql = "select r_number,r_adults,r_kids,to_char(r_checkin,'YYYY-MM-DD DAY') r_checkin, to_char(r_checkout,'YYYY-MM-DD DAY') r_checkout,r_type,r_price,to_char(r_time,'YYYY-MM-DD DAY') r_time from reservation where r_id=? order by r_checkin";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, u_idKey);
 				rs = pstmt.executeQuery();
@@ -208,7 +208,7 @@ public class ReservationDAO {
 		
 		try {
 			con = pool.getConnection();
-			sql = "delete from reservation_tbl where r_number=?";
+			sql = "delete from reservation where r_number=?";
 			pstmt = con.prepareStatement(sql);
 			for(int i=0;i<r_numbers.length;i++) {
 				pstmt.setInt(1, r_numbers[i]);
@@ -235,7 +235,7 @@ public class ReservationDAO {
 		try {
 			result = new ArrayList<ReservationDTO>();
 			con = pool.getConnection();
-			sql = "select r_number,r_id,r_adults,r_kids,to_char(r_checkin,'YYYY-MM-DD DAY') r_checkin, to_char(r_checkout,'YYYY-MM-DD DAY') r_checkout,r_type,r_price,to_char(r_time,'YYYY-MM-DD DAY') r_time from reservation_tbl order by r_number";
+			sql = "select r_number,r_id,r_adults,r_kids,to_char(r_checkin,'YYYY-MM-DD DAY') r_checkin, to_char(r_checkout,'YYYY-MM-DD DAY') r_checkout,r_type,r_price,to_char(r_time,'YYYY-MM-DD DAY') r_time from reservation order by r_number";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			

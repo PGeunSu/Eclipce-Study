@@ -10,6 +10,8 @@ input{
     width:60%;
     border:none;
     text-align:center;
+    background-color:#eee;
+    font-size:18px;
 }
 li{
 	list-style:none;	
@@ -22,3 +24,12 @@ li{
     font-size:medium;
     color:#f1ebd5;
 	}
+.diff{
+	
+	width:40px;
+	text-align:right;
+}
+.txt-room-price{
+	text-align:right;
+	font-size:16px;
+}

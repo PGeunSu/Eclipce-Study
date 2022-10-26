@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `board` (
   PRIMARY KEY (`num`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 projectdb.board:~0 rows (대략적) 내보내기
+-- 테이블 데이터 projectdb.board:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
 INSERT INTO `board` (`num`, `id`, `name`, `subject`, `content`, `regist_day`, `hit`, `ip`) VALUES
 	(1, 'pks4877', '박근수', 'ㅁㄴㅇ', 'ㅁㄴㅇ', '2022년 10월 24일', 3, '0:0:0:0:0:0:0:1'),
@@ -61,17 +61,20 @@ INSERT INTO `member` (`userID`, `userPassword`, `userEmail`, `userEnFirstName`, 
 CREATE TABLE IF NOT EXISTS `reservation` (
   `r_number` int NOT NULL,
   `r_id` varchar(30) NOT NULL,
+  `r_adults` int NOT NULL,
   `r_kids` int NOT NULL,
   `r_checkin` date NOT NULL,
   `r_checkout` date NOT NULL,
   `r_type` varchar(50) NOT NULL,
   `r_price` int NOT NULL,
-  `r_time` date DEFAULT NULL,
+  `r_time` int DEFAULT NULL,
   PRIMARY KEY (`r_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- 테이블 데이터 projectdb.reservation:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
+INSERT INTO `reservation` (`r_number`, `r_id`, `r_adults`, `r_kids`, `r_checkin`, `r_checkout`, `r_type`, `r_price`, `r_time`) VALUES
+	(1, 'pks4877', 1, 0, '2022-10-28', '2022-10-29', '그랜드 디럭스 룸', 520000, 1);
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 
 -- 테이블 projectdb.room 구조 내보내기
@@ -79,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   `room_id` int NOT NULL,
   `room_type` varchar(50) NOT NULL,
   `room_size` int NOT NULL,
+  `room_capacity` int DEFAULT NULL,
   `room_price` int NOT NULL,
   `room_img` varchar(60) DEFAULT NULL,
   `room_count` int NOT NULL,
@@ -87,6 +91,17 @@ CREATE TABLE IF NOT EXISTS `room` (
 
 -- 테이블 데이터 projectdb.room:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `room` DISABLE KEYS */;
+INSERT INTO `room` (`room_id`, `room_type`, `room_size`, `room_capacity`, `room_price`, `room_img`, `room_count`) VALUES
+	(1, '그랜드 디럭스 룸', 40, 2, 520000, 'room1.jpg', 1),
+	(2, '프리미어 룸', 50, 2, 570000, 'room2.jpg', 1),
+	(3, '시그니엘 프리미어 룸', 60, 2, 650000, 'room3.jpg', 1),
+	(4, '디럭스 스위트 룸', 65, 2, 980000, 'room4.jpg', 1),
+	(5, '프리미어 스위트 룸', 75, 2, 1560000, 'room5.jpg', 1),
+	(6, '코리안 프리미어 룸', 40, 2, 660000, 'room6.jpg', 1),
+	(7, '코리안 시그니엘 프리미어 룸', 45, 2, 700000, 'room7.jpg', 1),
+	(8, '코리안 스위트 룸', 85, 2, 2500000, 'room8.jpg', 1),
+	(9, '프레지덴셜 스위트 룸', 145, 2, 8000000, 'room9.jpg', 1),
+	(10, '로얄 스위트 룸', 350, 2, 16000000, 'room10.jpg', 1);
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

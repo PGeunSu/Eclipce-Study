@@ -76,7 +76,7 @@ public class ReservationRoomServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		String r_id = (String)session.getAttribute("u_idKey");
+		String r_id = (String)session.getAttribute("sessionId");
 		int r_adults = Integer.parseInt(request.getParameter("r_adults"));
 		int r_kids = Integer.parseInt(request.getParameter("r_kids"));
 		String r_checkin = request.getParameter("r_checkin");

@@ -30,7 +30,7 @@ public class RoomDAO {
 		try {
 			result = new ArrayList<RoomDTO>();
 			con = pool.getConnection();
-			sql = "select * from room_tbl order by room_id";
+			sql = "select * from room order by room_id";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			
@@ -63,7 +63,7 @@ public class RoomDAO {
 		
 		try {
 			con = pool.getConnection();
-			sql = "select * from room_tbl where room_type=?";
+			sql = "select * from room where room_type=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, room_type);
 			rs = pstmt.executeQuery();
@@ -93,7 +93,7 @@ public class RoomDAO {
 		
 		try {
 			con = pool.getConnection();
-			sql = "update room_tbl set room_type=?,room_size=?,room_capacity=?,room_price=?,room_count=? where room_id=? ";
+			sql = "update room set room_type=?,room_size=?,room_capacity=?,room_price=?,room_count=? where room_id=? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getRoom_type());
 			pstmt.setInt(2, dto.getRoom_size());

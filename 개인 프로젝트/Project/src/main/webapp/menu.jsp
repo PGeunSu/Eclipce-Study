@@ -49,7 +49,7 @@
 				<nav>
 					<ul class="s598-navi">
 						<li class="menu-1depth reservation">
-                                <a href="#none" class="menu-1depth-text ui-reservation-btn"><span>객실예약</span></a>
+                                <a href="${pageContext.request.contextPath}/reservation/reservation1.jsp" class="menu-1depth-text ui-reservation-btn"><span>객실예약</span></a>
                             </li>
 						<li class="menu-1depth">
 							<a class="menu-1depth-text" href="#" target="_self" data-menu-idx="0"><span>시그니엘 서울 소개</span></a>

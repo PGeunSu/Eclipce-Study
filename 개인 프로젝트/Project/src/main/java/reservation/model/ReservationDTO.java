@@ -88,6 +88,8 @@ public class ReservationDTO {
 		this.r_time = r_time;
 	}
 	
-	
+	public void rToString() {
+		System.out.println(this.r_number +  ", " + this.r_id + ", " + this.r_adults + ", " + this.r_kids + ", " + this.r_checkin + ", " + this.r_checkout + ", " + this.r_type + ", " + this.r_price + ", " + this.r_time);
+	}
 
 }

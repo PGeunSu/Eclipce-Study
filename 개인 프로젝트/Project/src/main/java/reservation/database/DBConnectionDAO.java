@@ -12,7 +12,6 @@ import java.util.Vector;
 
 public class DBConnectionDAO {
 	private ArrayList<ConnectionObject> connections = new ArrayList<ConnectionObject>(10);
-	private String _driver = "com.mysql.cj.jdbc.Driver";
 	private String _url = "jdbc:mysql://localhost:3307/ProjectDB";
 	private String _user = "root";
 	private String _password = "1234";
@@ -179,7 +178,7 @@ public class DBConnectionDAO {
 		if(!initialize) {
 		
 			try {
-				Class.forName(_driver);
+				Class.forName("com.mysql.cj.jdbc.Driver");
 				conn = DriverManager.getConnection(_url, _user, _password);
 			}catch(ClassNotFoundException e) {
 				System.err.println("getConnection() driver ERR : " + e.getMessage());

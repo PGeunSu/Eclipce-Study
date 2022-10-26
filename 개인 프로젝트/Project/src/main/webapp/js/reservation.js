@@ -24,3 +24,7 @@ function reservationCheck(){
 	
 	return true;
 }
+function breakfastCheck(diffday){
+	document.regForm.r_price.value = parseInt(document.regForm.price.value) + parseInt(diffday)*(20000*document.regForm.breakfast.value);
+	
+}

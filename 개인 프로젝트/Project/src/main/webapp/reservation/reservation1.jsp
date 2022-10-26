@@ -5,7 +5,9 @@
 <%
 
 	// 로그인 하지 않았을 시 로그인 페이지로 이동
-	
+	if(session.getAttribute("sessionId")==null){
+		response.sendRedirect("../member/login.jsp");
+	}
 	// 오늘 날짜를 나타내는 변수 생성
 	Date today = new Date();
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -75,7 +77,7 @@
 										    </div>
 										</div>
 										
-										<form action="reserveroom" method="get" name="regForm" style="margin:50px auto; width:60%; height:200px;">
+										<form action="reserveroom" method="get" name="regForm" style="margin:50px auto; width:50%; height:200px;">
 											<table class="reserve1">
 												<tr align="center" style="color:#a0a0a0; font-weight:bold; font-size:16px">
 													<td>체크인</td>
