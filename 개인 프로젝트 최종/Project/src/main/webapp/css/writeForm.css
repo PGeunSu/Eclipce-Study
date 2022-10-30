@@ -1,0 +1,28 @@
+  textarea {
+    width: 100%;
+    height: 300px;
+    border: none;
+    resize: none;
+  }
+   input{
+  	border : none;
+  } 
+  .subject {
+  	width : 60%;
+  	height : 40px;
+  }
+  
+  .name{
+  	width : 80%;
+  	height : 40px;
+  	font-size : 17px;
+  }
+  
+
+.s072__button span input{
+  	font-size : 17px;
+  	background-color: white;
+  }
+.s072__cta a{
+ 	margin-left : 10px;
+ }
