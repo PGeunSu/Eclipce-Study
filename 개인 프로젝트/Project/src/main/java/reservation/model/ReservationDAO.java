@@ -142,15 +142,16 @@ public class ReservationDAO {
 
 			try {
 				con = pool.getConnection();
-				sql = "insert into reservation values (1,?,?,?,?,?,?,?,1)";
+				sql = "insert into reservation values (?,?,?,?,?,?,?,?,1)";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, r.getR_id());				
-				pstmt.setInt(2, r.getR_adults());				
-				pstmt.setInt(3, r.getR_kids());				
-				pstmt.setString(4, r.getR_checkin());				
-				pstmt.setString(5, r.getR_checkout());				
-				pstmt.setString(6, r.getR_type());				
-				pstmt.setInt(7, r.getR_price());				
+				pstmt.setInt(1, r.getR_number());				
+				pstmt.setString(2, r.getR_id());				
+				pstmt.setInt(3, r.getR_adults());				
+				pstmt.setInt(4, r.getR_kids());				
+				pstmt.setString(5, r.getR_checkin());				
+				pstmt.setString(6, r.getR_checkout());				
+				pstmt.setString(7, r.getR_type());				
+				pstmt.setInt(8, r.getR_price());				
 
 				result = pstmt.executeUpdate();
 			}catch(Exception e) {
