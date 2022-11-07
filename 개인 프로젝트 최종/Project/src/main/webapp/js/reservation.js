@@ -28,3 +28,19 @@ function breakfastCheck(diffday){
 	document.regForm.r_price.value = parseInt(document.regForm.price.value) + parseInt(diffday)*(50000*document.regForm.breakfast.value);
 	
 }
+function cancelCheck(){
+	var cancel = document.getElementsByName("reserve");
+	var checkedNum = 0;
+	
+	for(var i=0;i<cancel.length;i++){
+		if(cancel[i].checked==true){
+			checkedNum += 1;
+		}
+	}
+	
+	if(checkedNum == 0){
+		alert("최소 1개 이상의 내역을 선택하여 주세요");
+		return false;
+	}
+	return true;
+}

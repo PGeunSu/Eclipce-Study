@@ -164,7 +164,7 @@ public class ReservationDAO {
 	}
 	
 	/** 해당 회원의 예약 내역을 ArrayList<ReservationDTO> 배열에 저장해서 반환하는 메서드 **/
-	public ArrayList<ReservationDTO> selectReservation(String u_idKey) {
+	public ArrayList<ReservationDTO> selectReservation(String sessionId) {
 		ArrayList<ReservationDTO> arlist = new ArrayList<ReservationDTO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -173,9 +173,9 @@ public class ReservationDAO {
 
 			try {
 				con = pool.getConnection();
-				sql = "select r_number,r_adults,r_kids,to_char(r_checkin,'YYYY-MM-DD DAY') r_checkin, to_char(r_checkout,'YYYY-MM-DD DAY') r_checkout,r_type,r_price,to_char(r_time,'YYYY-MM-DD DAY') r_time from reservation where r_id=? order by r_checkin";
+				sql = "select r_number,r_adults,r_kids, r_checkin, r_checkout,r_type,r_price, r_time from reservation where r_id=? order by r_checkin";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, u_idKey);
+				pstmt.setString(1, sessionId);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {

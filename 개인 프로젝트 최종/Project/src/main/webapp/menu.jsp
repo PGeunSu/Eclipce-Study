@@ -24,20 +24,20 @@
                         <a href="#" class="ico-global"><span>글로벌</span></a>
                         <a href="#" >호텔찾기</a>
                         <a href="#" ><span>멤버십</span></a>
-                        <a class="before-login-show" href="#"><span>예약조회</span></a>
                         <c:choose>
 							<c:when test="${empty sessionId}">
 								<a class="before-login-show" href="<c:url value="/member/login.jsp"/>">로그인</a>
 								<a class="before-login-show" href="<c:url value="/member/signup.jsp"/>">회원가입</a>
 							</c:when>
 							<c:otherwise>
+								<a class="before-login-show" href="<c:url value="/reservation/reserveinfo"/>">예약조회</a>
 								<a class="before-login-show" href="<c:url value="/member/logoutMember.jsp"/>">로그아웃</a>
 								<a class="before-login-show" href="<c:url value="/member/updateMember.jsp"/>">회원수정</a>
 								<a class="nav-link" href="<c:url value="/boardListAction.do?pageNum=1"/>">게시판</a>
 							</c:otherwise>
 						</c:choose>
                     </div>
-                    <div class="quick-site-ui-sel-wrapper"><!-- 아직 추가 안 함 --></div>
+                    <div class="quick-site-ui-sel-wrapper"></div>
 			</div>
 		</div>
 		</div>
